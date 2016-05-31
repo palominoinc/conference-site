@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<stylesheet id="stylZr050LJv4AQr" lang="any" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl" 
+                xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                >
+
+  <xsl:strip-space elements="*"/> <!-- to get rid of unnecessary whitespace in xml prior to parsing -->
+
+
+  
+
+  <xsl:template match="contentBlock">
+
+    <xsl:variable name="number-of-items" select="count(blockItem)" />
+    
+    <div id="contentBlock" class="contentBlockDiv">
+      <xsl:if test="text">
+        <div class="contentBlockText content-headline">
+          <xsl:copy-of select="text"/>
+        </div>
+      </xsl:if>
+
+      <div class="row">
+        <xsl:apply-templates select="blockItem" mode="blockItem">
+          <xsl:with-param name="number-of-items" select="$number-of-items"/>
+        </xsl:apply-templates>
+
+        <xsl:if test="button">
+          <xsl:for-each select="button">
+            <div class="text-center">
+              <a class="btn btn-cta btn-cta-secondary" href="{@button-link}" target="{@target}"><xsl:value-of select="@button-title" /></a>
+            </div>
+          </xsl:for-each>
+        </xsl:if>
+      </div>
+
+    </div>
+  </xsl:template>
+
+
+  <xsl:template match="contentBlock/blockItem" mode="blockItem">
+    <xsl:param name="number-of-items"/>
+    
+    <xsl:variable name="col-class">
+      <xsl:choose>
+        <xsl:when test="$number-of-items=1">
+          <xsl:value-of select="'col-sm-12'" />
+        </xsl:when>
+        <xsl:when test="$number-of-items=2">
+          <xsl:value-of select="'col-sm-6'" />
+        </xsl:when>
+        <xsl:when test="$number-of-items=3">
+          <xsl:value-of select="'col-sm-4'" />
+        </xsl:when>
+        <xsl:when test="$number-of-items=4">
+          <xsl:value-of select="'col-sm-3'" />
+        </xsl:when>
+        <xsl:when test="$number-of-items=6">
+          <xsl:value-of select="'col-sm-2'" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="'col-sm-6'" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+
+    <!-- individual image -->
+    <div class="item {$col-class} col-xs-12">
+      <div class="item-inner text-center">
+
+        <xsl:if test="icon">
+          <xsl:variable name="icon-class">
+            <xsl:value-of select="icon"/>
+          </xsl:variable>
+
+
+          <i class="fa fa-2 fa-{$icon-class}"></i>
+        </xsl:if>
+        <xsl:if test="image">
+          <xsl:variable name="image-path">
+            <xsl:value-of select="image/@src"/>
+          </xsl:variable>
+
+          <img src="?f={$image-path}" class="img-responsive"/>
+        </xsl:if>
+        <xsl:apply-templates select="block-text"/>
+      </div>
+    </div>
+
+  </xsl:template>
+
+  <xsl:template match="blockItem/image">
+    <img src="/?f={@src}"/>
+  </xsl:template>
+
+
+</xsl:stylesheet>]]></stylesheet>

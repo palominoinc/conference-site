@@ -1,0 +1,471 @@
+<?xml version="1.0"?>
+<stylesheet id="stylV5ta5nBIWJUZ" lang="any" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<?xml version="1.0"?>
+<!DOCTYPE xsl:stylesheet [
+<!ENTITY nbsp "&#160;" >
+]>
+
+<!-- (c) 2001-present All Copyrights Palomino System Innovations Inc.
+Illegal reproduction and disclosure will be prosecuted  -->
+
+<xsl:stylesheet
+version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns:wp="http://www.palominosys.com/wp"
+xmlns:php="http://php.net/xsl"
+xmlns:date="http://exslt.org/dates-and-times"
+xmlns:exsl="http://exslt.org/common"
+extension-element-prefixes="exsl"
+>
+  
+  <!-- ========================================================================================= -->
+  <!-- =================================== newslist templates ================================== -->
+  <!-- ========================================================================================= -->
+  
+  <xsl:template match="news-list">
+	
+	<!-- variable definitions -->
+	
+	<xsl:variable name="max-items">
+	  <xsl:choose>
+		<xsl:when test="./@index='10-most-recent'"><xsl:value-of select="number(10)"/></xsl:when>
+		<xsl:when test="./@index='5-most-recent'"><xsl:value-of select="number(5)"/></xsl:when>
+		<xsl:when test="./@index='most-recent'"><xsl:value-of select="number(1)"/></xsl:when>
+		<xsl:when test="./@index='list-none'"><xsl:value-of select="number(0)"/></xsl:when>
+		<xsl:otherwise><xsl:value-of select="count(news)"/></xsl:otherwise>
+	  </xsl:choose>
+	</xsl:variable>
+    
+
+    <xsl:variable name="items_per_row" select="@items-per-row"/>
+    <xsl:variable name="col_size" select="@col-size"/>
+	
+	<!-- get the path for each page link -->
+	<xsl:variable name="chapter_id" select="../@id"/>
+	<xsl:variable name="path">
+	  <xsl:call-template name="create_xpath_to_node">
+		<xsl:with-param name="node_id" select="$chapter_id"/>
+		<xsl:with-param name="web_root" select="//pages"/>
+	  </xsl:call-template>
+	</xsl:variable>
+	<xsl:variable name="news-base-link">
+	  <xsl:choose>
+		<xsl:when test="./@enable-individual-page='no' or ./enable-individual-page=''">
+		  <xsl:value-of select="''"/>
+		</xsl:when>
+		<xsl:otherwise>
+          <xsl:value-of select="concat('?path=',substring-after($path, $chapter_id))"/>
+<!--  		  <xsl:value-of select="concat('?path=',$path)"/> -->
+		</xsl:otherwise>
+	  </xsl:choose>
+	</xsl:variable>
+	
+	<!-- end of variable definitions -->
+	
+	<!-- get a new newslist node with new attributes for easier styling -->
+	<xsl:variable name="new-newslist-tree">
+	  <xsl:apply-templates select="." mode="pre-process">
+		<xsl:with-param name="max-items" select="$max-items"/>
+		<xsl:with-param name="index" select="./@index"/>
+		<xsl:with-param name="news-base-link" select="$news-base-link"/>
+	  </xsl:apply-templates>
+	</xsl:variable>
+	
+
+    <!-- render page -->
+    <xsl:variable name="new-newslist" select="exsl:node-set($new-newslist-tree)/news-list"/>
+    <!-- get attribute name for sorting -->
+    <xsl:variable name="sort-by">
+      <xsl:choose>
+        <xsl:when test="$new-newslist/news[1]/@*[name()!=@index-sort]"><xsl:value-of select="'date'"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="$new-newslist/@index-sort"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="newsID">
+      <xsl:value-of select="$new-newslist/@id"/>
+    </xsl:variable>
+
+
+    <div id="{$newsID}" class="row newslistNode"> 
+      <xsl:apply-templates select="$new-newslist/news" mode="page">
+        <xsl:sort order="{@sort-order}" select="@*[name()=$sort-by]"/>
+        <xsl:with-param name="max-items" select="$new-newslist/@max-items"/>
+        <xsl:with-param name="items-per-page" select="$new-newslist/@items-per-page"/>
+        <xsl:with-param name="items_per_row" select="$items_per_row"/>
+        <xsl:with-param name="col_size" select="$col_size"/>
+        <xsl:with-param name="number-of-pages" select="ceiling(count($new-newslist/news) div $new-newslist/@items-per-page)"/>
+        <xsl:with-param name="layout" select="$new-newslist/@layout"/>
+        <xsl:with-param name="readMoreTitle" select="$new-newslist/@readMoreTitle"/>
+        <xsl:with-param name="date-format" select="$new-newslist/@date-format"/>
+      </xsl:apply-templates>
+    </div>
+
+    <!-- pagination block -->
+    <div class="row paging">
+      <div class="col-xs-12 pages">
+        <div class="news_list_selector"></div>
+      </div>
+    </div> 
+
+    <xsl:variable name="containerID" select="concat('&quot;',$new-newslist/@id,'&quot;')"/>
+
+    <script type="text/javascript">
+		  $(window).load(function() {
+            
+            
+			var newslist = "#" + <xsl:value-of select="$containerID"/>;
+			var $containerID = <xsl:value-of select="$containerID"/>;
+			
+			$(newslist).css('visibility','visible');
+
+			
+			var $pageSelector = $("div.news_list_selector");
+
+			// jPages init
+			$pageSelector.jPages(
+				{
+		  			containerID  : $containerID,
+		  			perPage      : <xsl:value-of select='$new-newslist/@items-per-page'/>,
+		  			startPage    : 1,
+		  			startRange   : 1,
+		  			midRange     : 5,
+		  			endRange     : 1,
+		  			callback     :
+					 	function(pages, items)
+					 	{
+			 				var range = items.range;
+		   	 				var dummyElem = $(document.createElement('div'))
+		   						.text("Page ")
+		   						.css({"margin": "0 10px", "float": "right"});
+
+							var i = 0;
+							
+							$(newslist + ' .newsItemContainer').each(
+								function()
+								{
+								  	if (++i % <xsl:value-of select='$new-newslist/@items-per-page'/> == 0)
+									{
+									  $(this).last().css('border-bottom', 'none');
+									}
+								}
+							);
+                            window.location.hash = (pages.current);
+		  				}
+				}
+			);
+			
+			var $perPage = $(".news_perPage_filter");
+			var $perPageBtn = $perPage.find(".filter a");
+			
+			$perPageBtn.click(
+				function()
+				{
+		  			var pageLimit = $(this).attr('data-value');
+		  			
+		  			if (pageLimit)
+					{
+						$pageSelector.jPages("destroy").jPages(
+							{
+			  					containerID  : $containerID,
+			  					perPage      : pageLimit,
+			  					startPage    : 1,
+			  					startRange   : 1,
+			  					midRange     : 5,
+			  					endRange     : 1,
+			  					callback	   :
+								 	function(pages, items)
+								 	{
+										var range = items.range;
+										var dummyElem = $(document.createElement('div'))
+				  							.text("Page ")
+				  							.css({"margin": "0 10px", "float": "right"});
+
+										var i = 0;
+										
+										$(newslist + ' .newsItemContainer').each(
+											function()
+										{
+								  			if (++i % pageLimit == 0)
+											{
+									  			$(this).last().css('border-bottom', 'none');
+											}
+										}
+									);
+			  						}
+							}
+						);
+		  			}
+				}
+			 );
+		  	});
+          $page = parseInt(window.location.hash.substr(1));
+          window.onload = function(){$("div.container").jPages($page);}
+    </script>	
+  </xsl:template>  
+
+  
+  <!-- ========================================================================================= -->
+  <!-- ================================= news-list page templates =============================== -->
+  <!-- ========================================================================================= -->
+  
+  <xsl:template match="news" mode="page">
+    <xsl:param name="max-items"/>
+    <xsl:param name="items-per-page"/>
+    <xsl:param name="number-of-pages"/>
+    <xsl:param name="layout"/>
+    <xsl:param name="date-format"/>
+    <xsl:param name="readMoreTitle"/>
+    <xsl:param name="items_per_row"/>
+    <xsl:param name="col_size"/>
+
+    <!--  Column classes  -->
+    <xsl:variable name="col_class">
+      col-<xsl:value-of select="$col_size"/>-<xsl:value-of select="12 div $items_per_row"/>
+    </xsl:variable>
+
+    <xsl:variable name="newsLink"><xsl:value-of select="./@link"/></xsl:variable>
+    <xsl:variable name="newsTitle"><xsl:value-of select="title"/></xsl:variable>
+
+    <xsl:if test="position() &lt;= $max-items">   
+      <div class="{$col_class} newsItemContainer">
+        <div class="newsItem">
+
+          <!-- title here -->
+          <xsl:if test="contains($layout,'title')">
+            <div class="meta-title">
+              <xsl:choose>
+                <xsl:when test="./@link">
+                  <a href="{$newsLink}" title="{$newsTitle}" rel="bookmark">
+                    <xsl:value-of select="title"/>
+                  </a>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="title"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </div>
+          </xsl:if>
+
+          <!-- date here -->
+          <xsl:if test="contains($layout,'date')">
+            <div class="meta-date">
+              <xsl:variable name="formatted-date">
+                <xsl:call-template name="format-date">
+                  <xsl:with-param name="format" select="$date-format"/>
+                  <xsl:with-param name="date" select="./@date"/>
+                </xsl:call-template>
+              </xsl:variable>
+              <xsl:value-of select="$formatted-date"/>
+            </div>
+          </xsl:if>
+
+          <!-- author here -->
+          <xsl:if test="contains($layout,'author')">
+            <div class="meta-author">
+              <xsl:if test="author">
+                <xsl:value-of select="author"/>
+              </xsl:if>
+            </div>
+          </xsl:if>
+
+          <!-- description here -->
+          <xsl:if test="contains($layout,'synopsis')">
+            <div class="entry-synopsis">
+              <xsl:value-of select="synopsis"/><xsl:text disable-output-escaping="yes"> </xsl:text>
+
+              <xsl:if test="./@link">
+                <a href="{$newsLink}" class="readMore" rel="bookmark" title="Read more">
+                  <xsl:value-of select="$readMoreTitle"/><xsl:text disable-output-escaping="yes"> </xsl:text><i class="fa fa-angle-double-right"></i>
+                </a>
+              </xsl:if>
+
+            </div>
+          </xsl:if>
+
+          <!-- content here -->
+          <xsl:if test="contains($layout,'text')">
+            <div class="entry"><xsl:apply-templates select="text" /></div>
+          </xsl:if>
+
+        </div>
+      </div>
+
+    </xsl:if>
+  </xsl:template>
+
+  
+  <!-- ========================================================================================= -->
+  <!-- ============================ Individual news page template ============================== -->
+  <!-- ========================================================================================= -->
+  
+  <xsl:template match="news-list/news">
+	
+	<xsl:variable name="news-tree">
+	  <xsl:apply-templates select="." mode="pre-process">
+        <xsl:with-param name="index" select="../@index"/>
+        <xsl:with-param name="news-base-link" select="''"/>
+      </xsl:apply-templates>
+    </xsl:variable>
+
+    <xsl:variable name="news" select="exsl:node-set($news-tree)/news"/>
+    <div class="singlePage">
+
+      <h2>
+        <xsl:value-of select="$news/title"/>
+      </h2>
+
+      <div class="meta">
+        <!-- date here -->
+        <xsl:if test="contains(../@layout,'date')">
+          <xsl:variable name="formatted-date">
+            <xsl:call-template name="format-date">
+              <xsl:with-param name="format" select="../@date-format"/>
+              <xsl:with-param name="date" select="$news/@date"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <div class="meta-date"><i class="fa fa-calendar"></i><xsl:value-of select="$formatted-date"/></div>
+        </xsl:if>
+        
+        <!-- author here -->
+        <xsl:if test="$news/author">
+          <div class="meta-author"><i class="fa fa-user"></i><xsl:value-of select="$news/author"/></div>
+        </xsl:if>
+      </div>
+
+      <!-- content here -->
+      <xsl:if test="$news/text">
+        <div class="entry"><xsl:apply-templates select="$news/text"/></div>
+      </xsl:if>
+      
+      <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'" />
+      <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
+      
+      <xsl:if test="(../@include-social-bookmarking = 'yes')">
+        <xsl:variable name="link" select="concat('?path=/email-to-friend/&amp;news&amp;node=',@name)"/><br />
+        <div id="content_email" class="addthis_toolbox addthis_default_style addthis_32x32_style">
+          <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={@AddThis-ID}"></script>
+          <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+          <xsl:variable name="share-options" select="../@social-bookmark-option"/>
+          <xsl:variable name="share-option" select="translate($share-options,$uppercase,$smallcase)"/>
+         
+          <!-- sharing options -->
+          <xsl:if test="(contains($share-option,'facebook'))">
+            <a class="addthis_button_facebook"></a>
+          </xsl:if>
+          <xsl:if test="(contains($share-option,'twitter'))">
+            <a class="addthis_button_twitter"></a>
+          </xsl:if>
+          <xsl:if test="(contains($share-option,'linkedin'))">
+            <a class="addthis_button_linkedin"></a>
+          </xsl:if>
+          <xsl:if test="(contains($share-option,'googleplus'))">
+            <a class="addthis_button_google_plusone_badge"></a>
+          </xsl:if>
+          <xsl:if test="(contains($share-option,'email'))">
+            <a class="addthis_button_email"></a>
+          </xsl:if>
+          <xsl:if test="(contains($share-option,'print'))">
+            <a class="addthis_button_print"></a>
+          </xsl:if>
+          <xsl:if test="(contains($share-option,'compact'))">
+            <a class="addthis_button_compact"></a>
+          </xsl:if>
+          <xsl:if test="(contains($share-option,'random'))">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_compact"></a>
+          </xsl:if>
+          
+        </div>
+      </xsl:if>
+
+    </div>
+  </xsl:template>
+  
+  <!-- ========================================================================================= -->
+  <!-- ================================= pre-process templates ================================= -->
+  <!-- ========================================================================================= -->
+  
+  <!-- pre-process newslist -->
+  <xsl:template match="news-list" mode="pre-process">
+	<xsl:param name="max-items"/>
+	<xsl:param name="index"/>
+	<xsl:param name="news-base-link"/>
+	<xsl:param name="get-archived"/>
+	
+	<xsl:copy>
+      <xsl:attribute name="max-items">
+        <xsl:value-of select="$max-items"/>
+      </xsl:attribute>
+      <xsl:apply-templates select="@*|node()" mode="pre-process">
+		<xsl:with-param name="index" select="$index"/>
+		<xsl:with-param name="news-base-link" select="$news-base-link"/>
+		<xsl:with-param name="get-archived" select="$get-archived"/>
+	  </xsl:apply-templates>
+    </xsl:copy>
+  </xsl:template>
+  
+  <!-- pre-process news -->
+  <xsl:template match="news" mode="pre-process">
+	<xsl:param name="index"/>
+	<xsl:param name="news-base-link"/>
+	<xsl:param name="get-archived" />
+    
+	<xsl:variable name="current-day" select="php:function('strtotime','today')"/>
+	<xsl:variable name="pla-time">
+	  <xsl:choose>
+		<xsl:when test="./@post-live-at='' or not(./@post-live-at)">
+		  <xsl:value-of select="php:function('strtotime','1990-01-01')"/>
+		</xsl:when>
+		<xsl:otherwise>
+		  <xsl:value-of select="php:function('strtotime',string(./@post-live-at))"/>
+		</xsl:otherwise>
+	  </xsl:choose>
+	</xsl:variable>
+	<xsl:variable name="ea-time">
+	  <xsl:choose>
+		<xsl:when test="./@expire-after='' or not(./@expire-after)">
+		  <xsl:value-of select="php:function('strtotime','2099-12-31')"/>
+		</xsl:when>
+		<xsl:otherwise>
+		  <xsl:value-of select="php:function('strtotime',string(./@expire-after))"/>
+		</xsl:otherwise>
+	  </xsl:choose>
+	</xsl:variable>
+		
+	<!-- copy breaking news or frontpage only if one of these two options is flagged -->
+	<!-- copy non-expired news only -->
+	<xsl:if test="(
+				   ($get-archived and $ea-time &lt; $current-day)
+				    or (not($get-archived) and ($pla-time &lt;= $current-day and $current-day &lt;= $ea-time))
+				  )">
+	  <xsl:copy>
+		<xsl:if test="$news-base-link and $news-base-link != '' and @name and @name != ''">
+		  <xsl:attribute name="link">
+			<xsl:value-of select="concat($news-base-link,'&amp;node=',@name)"/>
+		  </xsl:attribute>
+		</xsl:if>
+		
+		<xsl:apply-templates select="@*|node()" mode="pre-process"/>
+	  </xsl:copy>
+	</xsl:if>
+  </xsl:template>
+  
+  <!-- pre-process all other nodes (copy forward) -->
+  <xsl:template match="@*|node()" mode="pre-process">
+	<xsl:choose>
+	  <!-- parse whitespace properly -->
+	  <xsl:when test="local-name()='ch' and ./@value='nbsp'">
+		<xsl:text disable-output-escaping="yes"> </xsl:text>
+	  </xsl:when>
+	  <xsl:otherwise>
+		<xsl:copy>
+		  <xsl:apply-templates select="@*|node()" mode="pre-process"/>
+		</xsl:copy>
+	  </xsl:otherwise>
+	</xsl:choose>
+  </xsl:template>
+  
+</xsl:stylesheet>]]></stylesheet>

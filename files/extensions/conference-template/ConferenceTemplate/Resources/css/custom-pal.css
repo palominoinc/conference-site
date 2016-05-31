@@ -1,0 +1,169 @@
+table td {
+    line-height: 30px;
+    padding-left: 3px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    line-height: 30px;
+    background-color: #ABABAB;
+    padding: 3px;
+    color: #fff;
+}
+
+header.navbar-default .navbar-nav > li > ul.dropdown-menu > li.active > a {
+    color: #fff;
+}
+
+.inner .content-item {
+    padding: 30px 0 130px;
+}
+
+.jumbotron-event {
+        width: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+#event-info  {
+  text-align:center;
+}
+
+#event-info i {
+  color: #CCCCCC;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+#event-info h4 {
+  font-size: 14px;
+  line-height: 24px;
+  height: 48px;
+  font-weight: bold;
+  color: #555555;
+  margin: 0;
+}
+
+#statistics i {
+  color: rgba(0,0,0,0.2);
+  font-size: 50px;
+}
+
+#statistics h4 {
+  font-weight: 300;
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+}
+
+#statistics p {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 30px 0 40px;
+  color: #FFFFFF;
+}
+#statistics .item-inner {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.content-item h1 {
+  font-weight: normal;
+  font-size: 45px;
+  line-height: 45px;
+  margin: 20px 0;
+}
+.content-item h2 {
+    text-transform: capitalize;
+}
+
+/* NEWS LIST */
+.newsItemContainer .meta-title {
+    font-weight: 400;
+    font-size: 20px;
+    color: #555555;
+    margin: 10px 0 15px;
+    padding: 0;
+    font-family: 'Montserrat', Verdana, Geneva, sans-serif;
+}
+.meta-date i {
+    margin-right: 5px;
+}
+.news_list_selector a {
+    padding: 8px 15px;
+    background: #60ACDB;
+    margin-right: 5px;
+    color: #fff;
+}
+
+.news_list_selector {
+    margin-top: 20px;
+}
+.news_list_selector a.jp-next:hover, .news_list_selector a.jp-previous:hover {
+    color: #fff;
+    cursor: pointer;
+}
+.news_list_selector a:hover {
+    color: #fff;
+    background: #386C8C;
+}
+a.jp-next.jp-disabled {
+    background: #C3C3C3;
+    cursor: not-allowed;
+    display: none;
+}
+a.jp-previous.jp-disabled {
+    display: none;
+}
+a.jp-current {
+    background: #386C8C;
+}
+
+
+
+/* STAFF LIST */
+.staffName {
+    font-size: 17px;
+    font-weight: bold;
+}
+.staff-summary p {
+    margin-bottom: 0;
+}
+.stafflist-details {
+    margin-top: 15px;
+}
+.staff-socialmedia a {
+    margin-right: 5px;
+    font-size: 18px;
+}
+.staffListItem {
+    margin-bottom: 30px;
+}
+
+
+#twitter_feed .rss_item {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 767px) {
+  footer.navbar {
+    position: absolute;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  header.navbar #secondary-nav li {
+    margin-right: 10px;
+}
+
+header.navbar-default .navbar-brand, header.navbar-default .navbar-brand:hover {
+  padding: 10px 10px 0 15px;
+}
+header.navbar-default .navbar-nav > li > a {
+  padding: 10px 6px;
+  border-radius: 0;
+  font-size: 13px;
+}
+}

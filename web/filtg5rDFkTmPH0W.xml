@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<filter id="filtg5rDFkTmPH0W" name="needPin" webpalschematype="wpAppClass">Route::filter('needPin', 'WebpalCore\Source\Filters@needPin');</filter>

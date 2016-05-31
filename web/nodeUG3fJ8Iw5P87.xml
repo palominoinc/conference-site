@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<node-schema id="nodeUG3fJ8Iw5P87" lang="any" show-in="main" webpalschematype="wpPageRaw"><![CDATA[<schema xmlns="http://www.palominosys.com/wpschema">
+  
+  <complexType name="wpSettingsConferenceSite" extends="wpWebsettings">
+    <element name="event" type="EventSiteSettings" minOccurs="1" maxOccurs="1"/>
+  </complexType>
+  
+  <complexType name="EventSiteSettings" icon="wrench.png" edittype="attributes">
+    <attribute name="web-colour" use="oneof" value="red,blue,orange,green,purple,light-blue,light-green,brown,yellow,pink"/>
+    <attribute name="title" use="required" value=""/>
+    <attribute name="full-title" use="required" value=""/>
+    <attribute name="location-city" use="oneof" value="edmonton,halifax,montreal,ottawa,toronto,vancouver"/>
+    <attribute name="location-map" use="optional" value=""/>
+    <attribute name="dates" use="optional" value=""/>
+    <attribute name="registration" use="oneof" value="closed,open"/>  
+    <attribute name="twitter-feed-title" use="optional" value=""/>
+    <attribute name="twitter-handle" use="optional" value=""/>
+    <attribute name="number-of-tweets" use="optional" value=""/>
+  </complexType>
+
+</schema>]]></node-schema>

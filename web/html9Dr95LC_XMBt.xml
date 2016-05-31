@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<html-code id="html9Dr95LC_XMBt" lang="any" show-in="main" webpalschematype="wpPageRaw"><![CDATA[<form id="contactForm">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="contact-alert-wrapper"></div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group control-group">
+        <div class="controls">
+          <p class="help-block"></p>
+          <label for="exampleInputPassword1">Attendee's Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Attendee's Name" data-validation-required-message="Please enter your name." aria-invalid="false">
+        </div>
+      </div>
+
+      <div class="form-group control-group">
+        <div class="controls">
+          <p class="help-block"></p>
+          <label for="exampleInputPassword1">Company/ Organisation</label>
+          <input type="text" class="form-control" id="company" placeholder="Company/ Organisation" data-validation-required-message="Please enter your Company/ Organisation." aria-invalid="false">
+        </div>
+      </div>
+
+      <div class="form-group control-group">
+        <div class="controls">
+          <p class="help-block"></p>
+          <label for="exampleInputPassword1">Phone</label>
+          <input type="text" class="form-control" id="phone" placeholder="Phone" data-validation-required-message="Please enter your phone number." aria-invalid="false">
+        </div>
+      </div>
+
+      <div class="form-group control-group">
+        <div class="controls">
+          <p class="help-block"></p>
+          <label for="exampleInputPassword1">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Email" data-validation-required-message="Please enter your email address." data-validation-email-message="Not a valid email address." aria-invalid="false">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group control-group">
+        <div class="controls">
+          <p class="help-block"></p>
+          <label for="exampleInputPassword1">Conference Program Title</label>
+          <input type="text" class="form-control" id="program" placeholder="Enter Conference Program Title" data-validation-required-message="Please enter your conference program title." aria-invalid="false">
+        </div>
+      </div>
+      <div class="form-group control-group">
+        <label for="exampleInputPassword1">Attending</label>
+        <div class="checkbox">
+          <input type="checkbox" name="morning" id="morning">
+          <label for="morning" class="css-label">Morning Sessions</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="afternoon" id="afternoon">
+          <label for="afternoon" class="css-label">AfternoonSessions</label>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="form-group form-btn">
+        <button type="submit" class="btn btn-normal">Register</button>
+      </div>
+    </div>
+
+  </div>
+</form>]]></html-code>

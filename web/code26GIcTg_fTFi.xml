@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<code-view id="code26GIcTg_fTFi" lang="any" name="error-page" webpalschematype="wpAppFormCode">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+    &lt;meta name="Author" content="Palomino System Innovations Inc. - http://www.palominosys.com" /&gt;
+    &lt;meta name="Version" content="3.2.0" /&gt;
+    &lt;meta name="Classification" content="" /&gt;
+
+    &lt;link type="text/css" rel="stylesheet" href="?f=resources/WebpalCore/errorpage.css" /&gt;
+
+    &lt;title&gt;Error: WebPal.net Cloud Server&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body class="errorBody"&gt;
+
+    &lt;div id="banner" class="banner dm-ui-banner"&gt;
+      &lt;div class="bannerLogo"&gt;
+        &lt;img src="?f=resources/WebpalCore/webpal_dm_logo.png" hspace="0" vspace="0" alt="WebPAL DM Logo"/&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="error-content"&gt;
+      &lt;h1&gt;
+        {{$title}}
+      &lt;/h1&gt;
+      &lt;div class="error_message"&gt;
+        {{$message}}
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</code-view>

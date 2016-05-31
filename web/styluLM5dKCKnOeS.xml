@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<stylesheet id="styluLM5dKCKnOeS" lang="any" name="widget-stylesheet" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<?xml version="1.0"?>
+<!DOCTYPE xsl:stylesheet [
+<!ENTITY nbsp "&#160;" >
+]>
+
+<!-- (c) 2001-present All Copyrights Palomino System Innovations Inc.
+Illegal reproduction and disclosure will be prosecuted  -->
+
+<xsl:stylesheet
+version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns:wp="http://www.palominosys.com/wp"
+xmlns:php="http://php.net/xsl"
+xmlns:date="http://exslt.org/dates-and-times"
+xmlns:exsl="http://exslt.org/common"
+extension-element-prefixes="exsl"
+>
+
+<!-- ========================================================================================= -->
+  <!-- ================================ newslist widget templates ============================== -->
+  <!-- ========================================================================================= -->
+  <xsl:template name="newslistWidget">
+	<xsl:param name="node-name"/>
+	<xsl:param name="max-items"/>
+	<xsl:param name="enable-view-all-link" />
+	<xsl:param name="enable-individual-page" />
+	<xsl:param name="sort-latest" />
+	<xsl:param name="widget-layout" />
+	<xsl:param name="view-all-link-text" />
+	<xsl:param name="get-archived" />
+    
+	<!-- <div class="widget iminBody-content"> -->
+	<div class="widget">
+	  
+	  <!-- if widget exists -->
+	  <xsl:choose>
+		<xsl:when test="//news-list[@name=$node-name]">
+		  
+		  <xsl:variable name="chapter_id" select="//news-list[@name=$node-name]/../@id"/>
+		  <xsl:variable name="path">
+			<xsl:call-template name="create_xpath_to_node">
+			  <xsl:with-param name="node_id" select="$chapter_id"/>
+			  <xsl:with-param name="web_root" select="//pages"/>
+			</xsl:call-template>
+		  </xsl:variable>
+          
+		  <xsl:variable name="news-base-link">
+			<xsl:choose>
+			  <xsl:when test="$enable-individual-page">
+                <xsl:value-of select="concat($path, '?path=')"/>
+			  </xsl:when>
+			  <xsl:otherwise>
+				<xsl:value-of select="''"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          
+          <xsl:variable name="my-max-items">
+            <xsl:choose>
+              <xsl:when test="not($max-items) or $max-items=''">
+                <xsl:value-of select="number(5)"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$max-items"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          
+          <xsl:variable name="widget_col_class">
+            <xsl:value-of select="$col-class"/>
+          </xsl:variable>
+
+
+          <!-- get a new newslist node with new attributes for easier styling -->
+          <xsl:variable name="new-newslist-tree">
+            <xsl:apply-templates select="//news-list[@name=$node-name]" mode="pre-process">
+              <xsl:with-param name="max-items" select="$my-max-items"/>
+              <xsl:with-param name="index" select="'list-all'"/>
+              <xsl:with-param name="news-base-link" select="$news-base-link"/>
+              <xsl:with-param name="get-archived" select="$get-archived"/>
+            </xsl:apply-templates>
+          </xsl:variable>
+          <xsl:variable name="new-newslist" select="exsl:node-set($new-newslist-tree)/news-list"/>
+          
+          <xsl:variable name="newsID">
+            <xsl:value-of select="$new-newslist/@id"/>
+          </xsl:variable>
+          
+          <!-- beginning of event list -->
+          <div id="widget{$newsID}" class="row newslistNode">
+            <xsl:apply-templates select="$new-newslist/news" mode="widget">
+              <xsl:sort order="descending" select="./@date"/>
+              <xsl:with-param name="max-items" select="$my-max-items"/>
+              <xsl:with-param name="col-class" select="$widget_col_class"/>
+              <xsl:with-param name="widget-layout" select="$new-newslist/@widget-layout"/>
+              <xsl:with-param name="date-format" select="$new-newslist/@date-format"/>
+            </xsl:apply-templates>
+          </div>
+		  <!-- end of event list -->
+
+          <!-- view all link -->
+		  <xsl:if test="$path!='' and $enable-view-all-link">
+			<a href="{$path}" class="newsViewAll">
+			  <xsl:choose>
+				<xsl:when test="$view-all-link-text">
+				  <xsl:value-of select="$view-all-link-text" />
+				</xsl:when>
+				<xsl:otherwise>
+				  View all
+				</xsl:otherwise>
+			  </xsl:choose>
+			</a>
+		  </xsl:if>
+          
+		</xsl:when>
+		<xsl:otherwise>
+		  <div class="error">Widget not found.</div>
+		</xsl:otherwise>
+	  </xsl:choose>
+	  <!-- end if widget exists -->
+	</div>
+  </xsl:template>
+  
+  
+  <xsl:template match="news" mode="widget">
+    <xsl:param name="max-items"/>
+    <xsl:param name="widget-layout"/>
+    <xsl:param name="date-format"/>
+
+    <xsl:variable name="newsLink"><xsl:value-of select="./@link"/></xsl:variable>
+    <xsl:variable name="newsTitle"><xsl:value-of select="title"/></xsl:variable>
+
+    <xsl:if test="position() &lt;= $max-items">
+      <div class="{$col-class} newsWidgetItemContainer">
+        <div class="newsWidgetItem">
+          
+          <!-- title here -->
+          <xsl:if test="contains($widget-layout,'title')">
+            <div class="meta-title">
+              <xsl:choose>
+                <xsl:when test="./@link">
+                  <a href="{$newsLink}" title="{$newsTitle}" rel="bookmark">
+                    <xsl:value-of select="title"/>
+                  </a>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="title"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </div>
+          </xsl:if>
+
+          <!-- date here -->
+          <xsl:if test="contains($widget-layout,'date')">
+            <div class="meta-date">
+              <xsl:variable name="formatted-date">
+                <xsl:call-template name="format-date">
+                  <xsl:with-param name="format" select="$date-format"/>
+                  <xsl:with-param name="date" select="./@date"/>
+                </xsl:call-template>
+              </xsl:variable>
+              <xsl:value-of select="$formatted-date"/>
+            </div>
+          </xsl:if>
+
+          <!-- author here -->
+          <xsl:if test="contains($widget-layout,'author')">
+            <div class="meta-author">
+              <xsl:if test="author">
+                <xsl:value-of select="author"/>
+              </xsl:if>
+            </div>
+          </xsl:if>
+
+          <!-- description here -->
+          <xsl:if test="contains($widget-layout,'synopsis')">
+            <div class="entry-synopsis">
+              <xsl:value-of select="synopsis"/>
+            </div>
+          </xsl:if>
+
+          <!-- content here -->
+          <xsl:if test="contains($widget-layout,'text')">
+            <div class="entry"><xsl:apply-templates select="text" /></div>
+          </xsl:if>
+
+        </div>
+      </div>
+
+    </xsl:if>
+  </xsl:template>
+  
+
+</xsl:stylesheet>]]></stylesheet>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<extension groupaccess="all:r" id="exteeg6xhaBOuNCx" name="webpal-core" webpalschematype="wpExtension">
+  <routes id="routyv558dyRXcPC" __stub="yes"/>
+  <filters id="filtx8dDB4t6e1oG" __stub="yes"/>
+  <controllers id="contzWDhdPN8Ky7Y" __stub="yes"/>
+  <views id="view90R7RR9kVigw" __stub="yes"/>
+  <README id="READAP4PeN8u9ea5" __stub="yes"/>
+  <node-schema id="nodenU7y5tVq2TTH" __stub="yes"/>
+  <stylesheet id="stylkZ0vFyd3hmCg" __stub="yes"/>
+  <stylesheet id="stylyaTccomBVTSU" __stub="yes"/>
+  <resources id="reso10ZgUH8wxy0W" __stub="yes"/>
+  <source id="sourx7LB7lKM0ltV" __stub="yes"/>
+</extension>

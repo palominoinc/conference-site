@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<stylesheet id="styl19QTjf157a4t" lang="any" name="home-template" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<xsl:stylesheet version="1.0" 
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:php="http://php.net/xsl"
+                xmlns:exsl="http://exslt.org/common"
+                xmlns:func="http://exslt.org/functions"
+                xmlns:wp="http://www.palominosys.com/wp"
+                xmlns:fn="http://www.w3.org/2005/xpath-functions" 
+                extension-element-prefixes="exsl wp func">
+
+  <xsl:template match="*[@design='home']" mode="page-template" priority="0.1">
+
+
+    <html>
+      <head>
+        <xsl:call-template name="head"/>
+      </head>
+      <body>
+
+        <xsl:call-template name="header-template"/>
+
+        <!-- ==========================JUMBOTRON - START=========================== -->      
+        <xsl:variable name='location-city'>
+          <xsl:value-of select="/web/settings/event/@location-city"/>
+        </xsl:variable>
+        <section class="jumbotron jumbotron-event" style="background-image:url(/_resources/ConferenceTemplate/images/slideshow/{$location-city}.jpg);">
+          <div class="container">
+            <h2>
+              <xsl:value-of select="/web/settings/event/@title"/></h2>
+          </div>
+        </section>
+        <!-- ==========================JUMBOTRON - END =========================== --> 
+        
+
+        <!-- ==========================EVENT INFO - START=========================== --> 
+        <xsl:if test="//page[@name='home']//*[@name='event-info']">
+          <section class="content-item grey" id="event-info">
+            <div class="container">
+              <xsl:apply-templates select="//page[@name='home']//*[@name='event-info']"/>
+            </div>
+          </section>
+        </xsl:if>
+
+        <!-- ==========================SERVICES - END =========================== -->
+
+        <!-- ==========================SERVICES - START=========================== --> 
+        <xsl:if test="//page[@name='home']//*[@name='topics']">
+          <section class="content-item" id="services">
+            <div class="container">
+              <xsl:apply-templates select="//page[@name='home']//*[@name='topics']"/>
+            </div>
+          </section>
+        </xsl:if>
+        <!-- ==========================SERVICES - END =========================== -->
+
+
+
+        <!-- ========================== STATISTICS - START =========================== -->
+        <xsl:if test="//page[@name='home']//*[@name='statistics']">
+          <section class="content-item" id="statistics">
+            <div class="container">
+              <xsl:apply-templates select="//page[@name='home']//*[@name='statistics']"/>
+            </div>
+          </section>
+        </xsl:if>
+        <!-- ========================== STATISTICS - END =========================== -->
+
+        <!-- ========================== RECENT POSTS - START =========================== -->
+        <section class="content-item" id="recent-posts">
+          <div class="container">
+            <div class="content-headline">
+              <xsl:apply-templates select="//page[@name='home']//*[@name='news-widget-title']"/>
+            </div>
+            
+            <xsl:call-template name="newslistWidget">  
+              <xsl:with-param name="node-name" select="'conference-newslist'" />  
+              <xsl:with-param name="enable-view-all-link" select="false()" />  
+              <xsl:with-param name="view-all-link-text" select="'Read more'" />  
+              <xsl:with-param name="enable-individual-page" select="true()" />  
+              <xsl:with-param name="col-class" select="'col-sm-4'"/>  
+              <xsl:with-param name="max-items" select="number(3)"/>  
+            </xsl:call-template>
+          </div>
+        </section>
+        <!-- ==========================RECENT POSTS - END=========================== -->
+
+        <xsl:call-template name="footer-template"/>
+
+        <!-- ========================== JS =========================== -->       
+        <!--   Removed this template as it was conflicting with ordering of each files   -->
+        <!--         <xsl:call-template name="include-extension-scripts"/> -->
+        <xsl:call-template name="footer-links"/>
+
+        <script>
+          var rxp = new RegExp("([0-9]+\.?[0-9]+)", "gm");
+          $("#statistics .item-inner p").each(function(){
+            var $this = $(this);
+            var content = $this.html();
+            $this.html(content.replace(rxp, "<span>$1</span>"));
+            $this.find('span').addClass("counter");
+          });
+
+          
+        </script>
+        
+        <script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)</script>
+
+
+
+      </body>
+    </html>
+
+  </xsl:template>
+</xsl:stylesheet>]]></stylesheet>

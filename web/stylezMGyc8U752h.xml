@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<stylesheet id="stylezMGyc8U752h" lang="any" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<?xml version="1.0"?>
+<!DOCTYPE xsl:stylesheet [
+<!ENTITY nbsp "&#160;" >
+]>
+
+<!-- (c) 2001-present All Copyrights Palomino System Innovations Inc.
+Illegal reproduction and disclosure will be prosecuted  -->
+
+<xsl:stylesheet version="1.0" 
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  
+                xmlns:php="http://php.net/xsl" xmlns:exsl="http://exslt.org/common" 
+                extension-element-prefixes="exsl">
+
+  
+  <xsl:template name="create_xpath_to_node">
+    <xsl:param name="node_id"/>
+    <xsl:param name="web_root"/>
+    <xsl:variable name="node" select="$web_root//page[@id=$node_id]"/>
+
+    <xsl:variable name="ancestors" select="$node/ancestor::page"/>
+    <xsl:value-of select="string('/')"/>
+    <xsl:for-each select="$ancestors">
+      <xsl:value-of select="@name"/>
+      <xsl:value-of select="string('/')"/>
+    </xsl:for-each>
+    <xsl:value-of select="$node/@name"/>
+  </xsl:template>
+  
+  
+  <xsl:template name="format-date">
+	<xsl:param name="format"/>
+	<xsl:param name="date"/>
+	
+	<xsl:variable name="php-format-string">
+	  <xsl:choose>
+		<xsl:when test="$format='yyyy-mm-dd'">
+		  <xsl:value-of select="'Y-m-d'"/>
+		</xsl:when>
+		<xsl:when test="$format='dd-mm-yyyy'">
+		  <xsl:value-of select="'d-m-Y'"/>
+		</xsl:when>
+		<xsl:when test="$format='yyyy/mm/dd'">
+		  <xsl:value-of select="'Y/m/d'"/>
+		</xsl:when>
+		<xsl:when test="$format='mm/dd/yyyy'">
+		  <xsl:value-of select="'m/d/Y'"/>
+		</xsl:when>
+		<xsl:when test="$format='dd/mm/yyyy'">
+		  <xsl:value-of select="'d/m/Y'"/>
+		</xsl:when>
+		<xsl:when test="$format='dd-Mon-yy'">
+		  <xsl:value-of select="'d-M-y'"/>
+		</xsl:when>
+        <xsl:when test="$format='Weekday_Month_dd_yy'">
+		  <xsl:value-of select="'l, F d, y'"/>
+		</xsl:when>
+		<xsl:when test="$format='Weekday_Month_dd_yyyy'">
+		  <xsl:value-of select="'l, F d, Y'"/>
+		</xsl:when>
+		<xsl:when test="$format='Weekday_dd_Month_yyyy'">
+		  <xsl:value-of select="'l, d F, Y'"/>
+		</xsl:when>
+		<xsl:when test="$format='Wkd_Mon_dd_yyyy'">
+		  <xsl:value-of select="'D, M d, Y'"/>
+		</xsl:when>
+		<xsl:when test="$format='Wkd_Mon_dd_yy'">
+		  <xsl:value-of select="'D, M d, y'"/>
+		</xsl:when>
+		<xsl:when test="$format='Month_dd_yyyy'">
+		  <xsl:value-of select="'F d, Y'"/>
+		</xsl:when>
+		<xsl:when test="$format='Mon_dd_yyyy'">
+		  <xsl:value-of select="'M d, Y'"/>
+		</xsl:when>
+	  </xsl:choose>
+	</xsl:variable>
+	
+	<xsl:variable name="date-string" select="php:function('strtotime',string($date))"/>
+	<xsl:value-of select="php:function('date',$php-format-string,number($date-string))"/>
+  </xsl:template>
+  
+  
+  
+  
+  
+</xsl:stylesheet>]]></stylesheet>

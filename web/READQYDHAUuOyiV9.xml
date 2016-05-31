@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<README id="READQYDHAUuOyiV9" lang="any" webpalschematype="wpHtml">
+    <h1>Getting started</h1>
+    <p>Please refer<ch value="nbsp"/>to our [WebPal Developer Guide](https://www.gitbook.com/book/palomino/webpaldev/details) for more information on how to use WebPal extensions</p>
+    <ul>
+      <li>Writing and extension</li>
+      <li>GitHub integration</li>
+    </ul>
+    <p>NOTE: 'extensions-essentials' is required for all WebPal extensions</p>
+    <h1>Extensions-essentials<ch value="nbsp"/></h1>
+    <p>Includes resources relevant, such as Bootstrap, FontAwesome, Jquery, etc. for all WebPal extensions.</p>
+    <p>Remember to add `<ch value="lt"/>xsl:call-template name="include-extension-styles"/<ch value="gt"/>` and `<ch value="lt"/>xsl:call-template name="include-extension-scripts"/<ch value="gt"/>`<ch value="nbsp"/>to your template so all your resource-links from all your extension will be included.</p>
+    <p>
+      <ch value="nbsp"/>
+    </p>
+  </README>

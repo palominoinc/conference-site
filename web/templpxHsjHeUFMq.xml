@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<template design="none" id="templpxHsjHeUFMq" lang="any" name="pin-page" preprocess="none" webpalschematype="wpAppViewTemplate"><![CDATA[<html lang="en" xml:lang="en">
+
+  <xsl:call-template name="webpalcore-theme-head"/>
+
+  <body class="loginBody">
+
+    <div id="banner" class="banner dm-ui-banner">
+      <div class="bannerLogo">
+        <img src="?f=resources/WebpalCore/webpal_dm_logo.png" hspace="0" vspace="0" alt="WebPAL DM Logo"/>
+      </div>
+    </div>
+
+    <div class="login-content">
+      <div class="login-box">
+        <h1>
+          Restricted Access
+        </h1>
+        @if (Session::get('message'))
+        <div class="login-message">
+          {{Session::get('message')}}        
+        </div>
+        @endif
+        <div class="login-box-form">
+          <form method="post" id="form-login-by-pin">
+            <p>
+              Enter PIN to login:
+            </p>
+            <p>
+              <input class="input" name="pin" id="form-input-pin" value="" data-placeholder="6-digit PIN"/>            
+            </p>
+            <button class="btn btn-lg" value=" LOGIN " onClick="submit()"> LOGIN </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
+
+
+]]></template>

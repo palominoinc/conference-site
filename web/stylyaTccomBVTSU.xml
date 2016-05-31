@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<stylesheet id="stylyaTccomBVTSU" lang="any" name="core-theme" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"
+                xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                >
+
+  <xsl:template match="*[@design='none']" mode="page-template" priority="0.5">
+    <xsl:comment>design none</xsl:comment>
+    <xsl:call-template name="render-content"/>
+  </xsl:template>
+
+  <xsl:template match="*" mode="page-template" priority="0.0">
+    <html lang="en">
+      <xsl:call-template name="webpalcore-theme-head"/>
+      <body style="">
+        <table>
+          <tr>
+            <td colspan="2">
+              <h1>
+                <xsl:value-of select="/web/settings/title"/>
+              </h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:300px; vertical-align: top; padding: 10px;">
+              <ul>
+                <xsl:apply-templates select="/web/pages/page" mode="navigation"/>
+              </ul>
+            </td>
+            <td style="width: 600px; padding: 20px;vertical-align: top; ">
+              <xsl:call-template name="page-content"/>
+            </td>
+          </tr>
+        </table>
+        <xsl:call-template name="include-extension-scripts"/>
+      </body>
+    </html>
+  </xsl:template>
+  <!-- ====================================================================================================== -->
+  <xsl:template match="*[@design='3-column']" mode="page-template" priority="0.1">
+    <html lang="en">
+      <xsl:call-template name="webpalcore-theme-head"/>
+      <body style="">
+        <table>
+          <tr>
+            <td colspan="3">
+              <h1>
+                <xsl:value-of select="/web/settings/title"/>
+              </h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:300px; vertical-align: top; padding: 10px;">
+              <ul>
+                <xsl:apply-templates select="/web/pages/page" mode="navigation"/>
+              </ul>
+            </td>
+            <td style="width: 600px; padding: 20px;vertical-align: top; ">
+              <xsl:call-template name="page-content"/>
+            </td>
+            <td style="width:300px; padding: 20px; vertical-align: top; ">
+              <xsl:apply-templates select="/web//page[@name='common']/html[@show-in='sidebar-right']"/>
+            </td>
+          </tr>
+        </table>
+        <xsl:call-template name="include-extension-scripts"/>
+      </body>
+    </html>
+  </xsl:template>
+  <!-- ====================================================================================================== -->
+  <xsl:template match="page" mode="navigation">
+    <xsl:param name="path" select="''"/>
+    <li><a href="{$path}/{@name}"><xsl:value-of select="@name"/></a></li>
+    <xsl:if test="page">
+      <ul>
+        <xsl:apply-templates select="page" mode="navigation">
+          <xsl:with-param name="path" select="concat($path, '/', @name)"/>
+        </xsl:apply-templates>
+      </ul>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="webpalcore-theme-head">
+    <head>
+      <meta charset="utf-8"/>
+      <title><xsl:value-of select="/web/settings/title"/></title>
+      <meta name="description" content=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link type="text/css" rel="stylesheet" href="?f=resources/WebpalCore/errorpage.css" />
+      <xsl:call-template name="include-extension-styles"/>
+    </head>
+  </xsl:template>
+
+
+</xsl:stylesheet>
+]]></stylesheet>

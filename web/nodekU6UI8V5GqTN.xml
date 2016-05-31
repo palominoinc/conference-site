@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<node-schema id="nodekU6UI8V5GqTN" lang="any" show-in="main" webpalschematype="wpPageRaw"><![CDATA[<schema xmlns="http://www.palominosys.com/wpschema">
+  
+    
+  <complexType extends="wpPage" name="wpPage-contentBlock">
+    <element name="contentBlock" type="wpContentBlockList" folder="list"/>
+  </complexType>
+
+
+
+  <complexType name="wpContentBlockList" edittype="sheet" icon="table.png" lockable="yes">
+
+    <attribute name="id" use="auto" type="wpString" value="contentBlock"/>
+    <attribute name="name" use="optional" type="wpName" value=""/>
+    <attribute name="show-in" use="oneof" type="wpString" value="main,related1,related2,related3,related4,related5"/>
+    <element name="text" type="wpHtml"/>
+    <element name="blockItem" type="wpBlockItem" />
+    <element name="button" type="wpBlockButton" />
+
+
+  </complexType>
+
+  <complexType name="wpBlockItem" edittype="sheet" icon="input.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="blockItem"/>
+    <element name="icon" type="wpString" maxOccurs="1" />
+    <element name="image" type="wpImage" maxOccurs="1" />
+    <element name="block-text" type="wpHtml" minOccurs="1" />
+  </complexType>
+
+
+  <complexType name="wpBlockButton" edittype="sheet" icon="input.png" lockable="yes">
+    <attribute name="button-title" use="default" type="wpString" value=""/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="target" use="oneof" value="_self,_blank,_parent,_top"/>
+    <attribute name="button-link" use="default" type="wpString" value=""/>
+  </complexType>
+
+</schema>]]></node-schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<stylesheet id="wpRaSzNLELGuEpdu" lang="any" name="standard-sidebar-template" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<xsl:stylesheet version="1.0" 
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:php="http://php.net/xsl"
+                xmlns:exsl="http://exslt.org/common"
+                xmlns:func="http://exslt.org/functions"
+                xmlns:wp="http://www.palominosys.com/wp"
+                xmlns:fn="http://www.w3.org/2005/xpath-functions" 
+                extension-element-prefixes="exsl wp func">
+
+  <xsl:template match="*[@design='standard-sidebar']" mode="page-template" priority="0.1">
+
+
+    <html>
+      <head>
+        <xsl:call-template name="head"/>
+      </head>
+      <body class="inner">
+
+        <xsl:call-template name="header-template"/>
+
+        <!-- ==========================CONTENT=========================== --> 
+        <section class="content-item">
+          <div class="container">
+
+            <div class="col-sm-9">
+              <xsl:call-template name="render-content">          
+                <xsl:with-param name="show-in" select="'main'"/>
+              </xsl:call-template> 
+            </div>
+            <div class="col-sm-3">
+              <xsl:call-template name="render-content">          
+                <xsl:with-param name="show-in" select="'related1'"/>
+              </xsl:call-template> 
+              <xsl:if test="/web/settings/event/@twitter-feed-title != '' ">
+                <h3>
+                  <xsl:value-of select="/web/settings/event/@twitter-feed-title"/><i class="fa fa-twitter"></i>
+                </h3>
+              </xsl:if>
+              <xsl:if test="/web/settings/event/@twitter-handle != '' ">
+                <div id="twitter_feed"></div>
+              </xsl:if>
+            </div>
+
+          </div>
+        </section>
+        <!-- ==========================CONTENT - END =========================== -->
+
+
+        <xsl:call-template name="footer-template"/>
+
+        <!-- ========================== JS =========================== -->   
+        <!--   Removed this template as it was conflicting with ordering of each files   -->
+        <!--   <xsl:call-template name="include-extension-scripts"/> -->
+        
+        <xsl:call-template name="footer-links"/>
+        <script>
+
+          var data = {'username': '<xsl:value-of select="/web/settings/event/@twitter-handle"/>',
+                      'num-tweets': '<xsl:value-of select="/web/settings/event/@number-of-tweets"/>'};
+
+          //twitter feed
+          $.ajax({
+            url: '/twitter/feeds',
+            data: data,
+            success: function(data, statusText, jqXHR){
+              $('#twitter_feed').html(jqXHR.responseText);
+            },
+            error: function (jqXHR, statusText, errorThrown) {
+              $('#twitter_feed').html('error');
+            }
+          });
+        </script>
+        <script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)</script>
+
+        
+
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>]]></stylesheet>

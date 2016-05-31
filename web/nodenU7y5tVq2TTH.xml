@@ -1,0 +1,1136 @@
+<?xml version="1.0"?>
+<node-schema id="nodenU7y5tVq2TTH" lang="any" name="core-xsd" show-in="main" webpalschematype="wpPageRaw"><![CDATA[<schema xmlns="http://www.palominosys.com/wpschema">
+
+  <!-- ==================== WEBPAL CORE NODE SCHEMA DEFINTIONS =================== -->
+  <!-- EDIT CAREFULLY. Editing this schema may result in the site not being accessible anymore -->
+
+  <!-- HELP:
+       The web (type wpWeb) is the root of all elements.
+       Child nodes follow a complexType definition, which can inherit attributes and child
+       nodes from other complexType definitions. Attributes can be of any simpleType.
+
+       WebPal extends the standard W3C schema definition language (XSD) by the following
+       attributes:
+
+       icon:  defines an icon to be used for this node type in the UI treeview
+       edittype: (sheet|table|html|raw|image) defines which editor type the UI opens
+       for this node type.
+       lockable: (no|yes) identifies whether this node is lockable for concurrent editing
+       hideChildren: (no|yes) declares whether children will be hidden in UI treeview
+
+       use: (optional|default|required|auto|oneof|hide)
+       value: (any string)
+       declare how the attribute can be manipulated by the user via the UI.
+       - optional: the attribute is empty by default and optional to fill in
+       - default: the attribute is set to the string set in value by default and can be edited.
+       - required: empty by default. user is required and enforced by the UI.
+       - auto: mostly used for @id attributes. if not already set, sets the attribute to value + a unique string
+       - oneof: presents a drop-down with options defined as CSV in value
+       - hide: does not show this attribute and defaults it to value instead
+
+       More information at: http://www.w3schools.com/schema/
+       All icons are from Silk 700 iconset (Thanks to FAMFAMFAM!)
+       http://www.famfamfam.com/lab/icons/silk/previews/index_abc.png
+  -->
+
+  <element name="web" type="wpWeb"/>
+
+  <complexType name="wpWeb" edittype="sheet" icon="world.png" lockable="yes">
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="id" use="auto" value="web" type="wpString"/>
+
+    <element name="settings" type="wpWebsettings" minOccurs="1" maxOccurs="1"/>
+    <element name="designs" type="wpDesigns" minOccurs="1"/>
+    <element name="pages" type="wpPageList" maxOccurs="1"/>
+    <element name="apps" type="wpAppList" maxOccurs="1"/>
+    <element name="extensions" type="wpExtensions" maxOccurs="1"/>
+    <element name="databases" type="wpDatabases" maxOccurs="1"/>
+  </complexType>
+
+
+  <complexType name="wpWebsettings" edittype="sheet" icon="wrench.png" lockable="yes">
+    <attribute name="id" use="auto" value="webset" type="wpString"/>
+    <element name="web-phrases" type="wpWebPhrases" maxOccurs="1" />
+    <element name="title" type="wpStringL"  minOccurs="1" />
+    <element name="shorttitle" type="wpShorttitle"  minOccurs="1" />
+    <element name="author" type="wpString"/>
+    <element name="classification" type="wpStringL"/>
+    <element name="description" type="wpStringL"/>
+    <element name="keywords" type="wpStringL"/>
+    <element name="lang" type="wpString"/>
+    <element name="laravel-configuration" type="wpLaravelConfiguration"  maxOccurs="1" />
+  </complexType>
+
+
+  <complexType name="wpPageList" edittype="sheet" icon="folder_page.png">
+    <element name="page" type="wpPage"/>
+  </complexType>
+
+  <complexType name="wpPage" edittype="sheet" icon="folder_page.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="chap"/>
+    <attribute name="name" use="required" type="wpPageName"/>
+
+    <!-- the following page-templates are provided by the BASIC theme which is part of WEBPAL-CORE. To allow other designs, simply extend this node -->
+    <attribute name="design" use="optional"  type="wpString"/>
+    <attribute name="show-in-menu" use="oneof"  type="wpString" value="yes,no,sub-pages-only"/>
+    <attribute name="index" use="oneof" value="same as parent,exclude secure content,all content,do not index"/>
+    <attribute name="filters" use="optional"  type="wpString"/>
+
+    <element name="page" type="wpPage"/>
+    <element name="title" type="wpStringL"/>
+    <element name="shorttitle" type="wpShorttitle" minOccurs="1"/>
+    <element name="html" type="wpPageHtml"/>
+
+    <!-- ===============  page elements ============================= -->
+    <element name="title" type="wpStringL" folder="core"/>
+    <element name="shorttitle" type="wpShorttitle" minOccurs="1" folder="core"/>
+    <element name="description" type="wpStringL" folder="core"/>
+    <element name="link" type="wpStringL" maxOccurs="1" folder="core"/>
+    <element name="image" type="wpImage" folder="core"/>
+    <element name="description" type="wpStringL" folder="core"/>
+    <element name="keywords" type="wpStringL" folder="core"/>
+    <element name="html-code" type="wpPageRaw" folder="core"/>
+    <element name="html-code-anchor" type="wpPageRaw" folder="core"/>
+  </complexType>
+
+
+<!--   <complexType name="wpEmbeddedData" edittype="data-table" icon="table.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="dtab"/>
+    <attribute name="name" use="default" type="wpString" value="data-table"/>
+  </complexType> -->
+
+  <!-- apps list -->
+
+  <complexType name="wpExtensions" edittype="sheet" icon="folder_brick.png" lockable="yes">
+    <attribute name="id" use="auto" value="webset" type="wpString"/>
+    <element name="extension" type="wpExtension" />
+    <element name="smart-form" type="wpSmartFormApp" />
+    <element name="filters" type="wpAppFilterList" />
+  </complexType>
+
+  <!-- app or extension -->
+  <complexType name="wpExtension" edittype="sheet" icon="brick.png" lockable="yes">
+    <attribute name="id" use="auto" value="webset" type="wpString"/>
+    <attribute name="name" use="required" type="wpName" />
+    <element name="README" type="wpHtml" maxOccurs="1"/>
+    <element name="changelog" type="wpPageRaw" maxOccurs="1"/>
+    <element name="node-schema" type="wpPageRaw" />
+    <element name="page-templates" type="wpAppPageTemplateList"/>
+    <element name="designs" type="wpDesigns"/>
+    <element name="stylesheet" type="wpAppStylesheet" />
+    <element name="script" type="wpNamedCode" />
+    <element name="models" type="wpAppModelFolder" maxOccurs="1" />
+    <element name="migrations" type="wpAppMigrationsFolder" maxOccurs="1" />
+    <element name="controllers" type="wpAppControllerFolder" maxOccurs="1"/>
+    <element name="routes" type="wpAppRouteList" maxOccurs="1" />
+    <element name="route-folders" type="wpAppRouteFolder" maxOccurs="1" />
+    <element name="views" type="wpAppViewList" maxOccurs="1"/>
+    <element name="filters" type="wpAppFilterList" />
+    <element name="source" type="wpAppSourceFolder" maxOccurs="1" />
+    <element name="resources" type="wpAppResources" maxOccurs="1" />
+    <element name="db-schema" type="wpAppSchema" maxOccurs="1" />
+    <element name="resource-links" type="wpAppResourceLinks" maxOccurs="1" />
+    <element name="dependencies" type="wpAppDependencies" maxOccurs="1" />
+  </complexType>
+
+  <!-- app or extension -->
+  <complexType name="wpAppTheme" edittype="sheet" icon="brick.png" lockable="yes">
+    <attribute name="id" use="auto" value="webset" type="wpString"/>
+    <attribute name="name" use="required" type="wpName" />
+    <element name="README" type="wpHtml" maxOccurs="1"/>
+    <element name="changelog" type="wpPageRaw" maxOccurs="1"/>
+    <element name="node-schema" type="wpPageRaw" />
+    <element name="page-templates" type="wpAppPageTemplateList"/>
+    <element name="resources" type="wpAppResources" maxOccurs="1" />
+    <element name="resource-links" type="wpAppResourceLinks" maxOccurs="1" />
+    <element name="dependencies" type="wpAppDependencies" maxOccurs="1" />
+  </complexType>
+
+  <complexType name="wpAppStylesheet" icon="page_white_code_red.png" base="wpRaw">
+    <attribute name="name" use="optional" type="wpName"/>
+    <attribute name="show-in" use="oneof" value="main,related1,related2,related3,related4,related5" type="wpString"/>
+  </complexType>
+
+  <!-- wpNamedCode -->
+  <complexType name="wpNamedCode" icon="page_white_code.png" edittype="raw">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="name" use="required" type="wpName" />
+  </complexType>
+
+  <!-- Laravel Configuration Directory -->
+  <complexType name="wpLaravelConfiguration" edittype="source-folder" icon="folder_wrench.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="string" use="hide" value="laravel-configuration" />
+    <attribute name="folder-type" type="string" use="hide" value="php" />
+  </complexType>
+
+  <!-- Extra PHP resources -->
+  <complexType name="wpAppSourceFolder" edittype="source-folder" icon="folder.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="string" use="hide" value="source" />
+    <attribute name="folder-type" type="string" use="hide" value="php" />
+  </complexType>
+
+  <!-- Model -->
+  <complexType name="wpAppMigrationsFolder"
+               edittype="source-folder"
+               icon="folder.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="string" use="hide" value="migrations" />
+    <attribute name="folder-type" type="string" use="hide" value="php" />
+  </complexType>
+
+  <!-- Model -->
+  <complexType name="wpAppModelFolder"
+               edittype="source-folder"
+               icon="bricks.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="string" use="hide" value="models" />
+    <attribute name="folder-type" type="string" use="hide" value="php" />
+  </complexType>
+
+  <!-- Controller -->
+  <complexType name="wpAppControllerFolder"
+               edittype="source-folder"
+               icon="control_repeat_blue.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="string" use="hide" value="controllers" />
+    <attribute name="folder-type" type="string" use="hide" value="php" />
+  </complexType>
+
+  <!-- wpAppCode -->
+  <complexType name="wpAppCode" edittype="raw" icon="bullet_green.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+  </complexType>
+
+  <!-- wpAppClass -->
+  <complexType name="wpAppClass" edittype="raw" icon="bullet_green.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="wpString" use="required" />
+  </complexType>
+
+  <!-- wpFileEditable -->
+  <complexType name="wpFileEditable" edittype="raw" icon="bullet_green.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="wpString" use="required" />
+  </complexType>
+
+  <!-- wpAppRoute -->
+  <complexType name="wpAppRoute" edittype="sheet" icon="bullet_green.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="verb" type="wpString" use="oneof" value="get,post,put,delete,any" />
+    <attribute name="pattern" type="wpString" use="required" />
+    <attribute name="controller" type="wpString" use="required" />
+    <attribute name="name" type="wpString" use="required" />
+    <attribute name="parameters" type="wpString" use="optional" />
+    <attribute name="filter" type="wpString" use="optional" />
+  </complexType>
+
+  <!-- wpAppRouteFolder -->
+  <complexType name="wpAppRouteFolder" edittype="sheet" icon="folder_link.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apprtelst"/>
+    <attribute name="name" type="wpString" use="required" value="routes-folder" />
+    <element name="routes" type="wpAppRouteList" maxOccurs="1" />
+    <element name="folder" type="wpAppRouteSubFolder" />
+  </complexType>
+
+  <!-- wpAppRouteSubFolder -->
+  <complexType name="wpAppRouteSubFolder" edittype="sheet" icon="folder_link.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apprtelst"/>
+    <attribute name="name" type="wpString" use="required" />
+    <element name="routes" type="wpAppRouteList" maxOccurs="1" />
+    <element name="folder" type="wpAppRouteSubFolder" />
+  </complexType>
+
+  <!-- wpAppRouteList -->
+  <complexType name="wpAppRouteList" edittype="table" icon="arrow_divide.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apprtelst"/>
+    <attribute name="column-widths" use="default" type="wpString" value="67,60,274,276,92,101" />
+    <element name="route" type="wpAppRoute" />
+  </complexType>
+
+  <!-- wpAppPageTemplateList -->
+  <complexType name="wpAppPageTemplateList" edittype="sheet" icon="folder_page.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="appvwlst"/>
+    <element name="page-template" type="wpAppFormCode" />
+  </complexType>
+
+  <!-- wpAppViewList -->
+  <complexType name="wpAppViewList"
+               edittype="sheet"
+               icon="application_double.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="appvwlst"/>
+    <element name="page-view" type="wpAppPage" />
+    <element name="form-view" type="wpAppForm" />
+    <element name="code-view" type="wpAppFormCode" />
+    <element name="template" type="wpAppViewTemplate" />
+    <element name="folder" type="wpAppViewFolder" />
+  </complexType>
+
+  <!-- wpAppViewFolder -->
+  <complexType name="wpAppViewFolder"
+               edittype="sheet"
+               icon="application_double.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="appvwlst"/>
+    <attribute name="name" type="wpString" use="required" />
+    <element name="page-view" type="wpAppPage" />
+    <element name="form-view" type="wpAppForm" />
+    <element name="code-view" type="wpAppFormCode" />
+    <element name="template" type="wpAppViewTemplate" />
+    <element name="folder" type="wpAppViewFolder" />
+  </complexType>
+  controler
+  <!-- wpAppPage -->
+  <complexType name="wpAppPage"
+               base="wpPage"
+               edittype="sheet"
+               icon="page_white.png"
+               lockable="yes">
+    <attribute name="name" use="required" type="wpPageName"/>
+    <attribute name="id" use="auto" type="wpString" value="chap"/>
+    <attribute name="design" use="optional"  type="wpString"/>
+  </complexType>
+
+  <!-- wpAppForm -->
+  <complexType name="wpAppForm" icon="application_form.png" base="wpHTMLForm">
+    <attribute name="design" use="optional"  type="wpString"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="model" use="optional" type="wpString"/>
+    <attribute name="url" use="optional" type="wpString"/>
+    <attribute name="type" use="oneof" value="basic,smart-form" type="wpString"/>
+  </complexType>
+
+  <!-- wpAppFormCode -->
+  <complexType name="wpAppFormCode" icon="page_white_code.png" base="wpAppClass">
+    <attribute name="design" use="optional" type="wpString"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+  </complexType>
+
+  <!-- wpAppViewTemplate -->
+  <complexType name="wpAppViewTemplate" icon="page_white_code_red.png" base="wpRaw">
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="design" use="optional"  type="wpString"/>
+    <attribute name="preprocess" use="oneof" value="none,laravel" type="wpString"/>
+  </complexType>
+
+  <!-- wpAppFilterList -->
+  <complexType name="wpAppFilterList"
+               edittype="sheet"
+               confirmDelete="yes"
+               icon="bullet_red.png">
+    <attribute name="id" use="auto" type="wpString" value="fltrlst"/>
+    <element name="filter" type="wpAppClass" />
+  </complexType>
+
+  <!-- wpAppConfigList -->
+  <complexType name="wpAppConfigList"
+               edittype="sheet"
+               confirmDelete="yes"
+               icon="bullet_red.png">
+    <attribute name="id" use="auto" type="wpString" value="cfgli"/>
+    <element name="config" type="wpAppClass" />
+    <element name="connection" type="wpAppConnection" />
+  </complexType>
+
+  <!-- wpAppConnection -->
+  <complexType name="wpAppConnection" icon="bullet_red.png" edittype="sheet" >
+    <attribute name="id" use="auto" type="wpString" value="appcon"/>
+    <attribute name="name" use="required" type="wpName"/>
+  </complexType>
+
+  <!-- wpAppResources -->
+  <complexType name="wpAppResources"
+               edittype="source-folder"
+               confirmDelete="yes"
+               icon="folder_picture.png">
+    <attribute name="id" use="auto" type="wpString" value="pckg"/>
+    <attribute name="name" type="string" use="hidden" value="resources" />
+    <attribute name="folder-type" type="string" use="hide" value="any" />
+  </complexType>
+
+  <!-- database schema -->
+  <complexType name="wpAppSchema"
+               edittype="sheet"
+               confirmDelete="yes"
+               icon="database.png">
+    <attribute name="id" use="auto" type="wpString" value="pckg"/>
+    <element name="object" type="wpAppSchemaObject" />
+    <element name="objects" type="wpAppSchemaObjects" />
+    <element name="views" type="wpAppSchemaViews" />
+    <element name="functions" type="wpAppSchemaFunctions" />
+    <element name="triggers" type="wpAppSchemaTriggers" />
+  </complexType>
+
+
+  <!-- group of database table columns -->
+  <complexType name="wpAppSchemaObjects"
+               edittype="table"
+               confirmDelete="yes"
+               icon="database_table.png">
+    <attribute name="id" use="auto" type="wpString" value="tble"/>
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="column-widths" use="default" type="wpString" value="300,300,300,300,300,300,300,300" />
+
+    <element name="field" type="wpAppSchemaField" minOccurs="1" />
+  </complexType>
+
+  <!-- database table column -->
+  <complexType name="wpAppSchemaField"
+               edittype="sheet"
+               confirmDelete="yes"
+               icon="text_field.png">
+    <attribute name="id" use="auto" type="wpString" value="col"/>
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="type" use="oneof" value=",BOOL,INT,INT(11),TINYINT,MEDIUMINT,BIGINT,FLOAT,DOUBLE,DATE,DATETIME,TIMESTAMP,TIME,VARCHAR(8),VARCHAR(16),VARCHAR(32),VARCHAR(64),VARCHAR(128),VARCHAR(256),VARCHAR(1024),TEXT,MEDIUMTEXT,LONGTEXT,ENUM,DECIMAL(64,2),BLOB,BINARY(256)" type="wpString"/>
+    <attribute name="not-null" type="wpString"/>
+    <attribute name="default" type="wpString"/>
+    <attribute name="on-update" type="wpString"/>
+    <attribute name="index" use="oneof" value=",yes,unique,primary" type="wpString"/>
+    <attribute name="comments" use="optional" type="wpString" />
+  </complexType>
+
+  <!-- database table -->
+  <complexType name="wpAppSchemaObject"
+               edittype="sheet"
+               confirmDelete="yes"
+               icon="database_table.png">
+    <attribute name="id" use="auto" type="wpString" value="tble"/>
+    <attribute name="name" use="required" type="wpName"/>
+
+    <element name="fields" type="wpAppSchemaFields" minOccurs="1"
+             maxOccurs="1"/>
+    <element name="foreign" type="wpAppSchemaRelationship" />
+  </complexType>
+
+  <!-- group of database table columns -->
+  <complexType name="wpAppSchemaFields"
+               edittype="table"
+               confirmDelete="yes"
+               icon="table_gear.png">
+    <attribute name="id" use="auto" type="wpString" value="tble"/>
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300,100" />
+
+    <element name="field" type="wpAppSchemaField" minOccurs="1" />
+  </complexType>
+
+  <!-- wpAppSchemaViews -->
+  <complexType name="wpAppSchemaViews"
+               edittype="table"
+               confirmDelete="yes"
+               icon="page_white_database.png">
+    <attribute name="id" use="auto" type="wpString" value="view"/>
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300,100" />
+
+    <element name="views" type="wpAppSchemaView" />
+  </complexType>
+
+  <!--  wpAppSchemaView -->
+  <complexType name="wpAppSchemaView"
+               edittype="raw"
+               icon="page_white_database.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="view"/>
+    <attribute name="name" type="wpString" use="required" />
+  </complexType>
+
+  <!-- wpAppSchemaFunctions -->
+  <complexType name="wpAppSchemaFunctions"
+               edittype="table"
+               confirmDelete="yes"
+               icon="page_white_database.png">
+    <attribute name="id" use="auto" type="wpString" value="funs"/>
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300,100" />
+
+
+    <element name="functions" type="wpAppSchemaFunction" />
+  </complexType>
+
+  <!--  wpAppSchemaFunction -->
+  <complexType name="wpAppSchemaFunction" edittype="raw" icon="page_white_database.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="funs"/>
+    <attribute name="name" type="wpString" use="required" />
+  </complexType>
+
+  <!-- wpAppSchemaTriggers -->
+  <complexType name="wpAppSchemaTriggers"
+               edittype="table"
+               confirmDelete="yes"
+               icon="table_lightning.png">
+    <attribute name="id" use="auto" type="wpString" value="trig"/>
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300,100" />
+
+    <element name="triggers" type="wpAppSchemaTrigger" />
+  </complexType>
+
+  <!--  wpAppSchemaTrigger -->
+  <complexType name="wpAppSchemaTrigger"
+               edittype="raw"
+               icon="table_lightning.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="trig"/>
+    <attribute name="name" type="wpString" use="required" />
+  </complexType>
+
+
+
+  <!-- wpAppForeignKey -->
+  <complexType name="wpAppSchemaRelationship"
+               edittype="sheet"
+               confirmDelete="yes"
+               icon="database_link.png">
+    <attribute name="id" use="auto" type="wpString" value="col"/>
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="table" use="required" type="wpString"/>
+    <attribute name="field" type="wpString"/>
+  </complexType>
+
+  <!-- ========================= SMARTFORMS ================================= -->
+  <!-- this is a special type of application that renders complex, multi-page
+       survey forms and includes all the necessary processing and validation
+       to build data applications around these smart forms. -->
+
+  <complexType name="wpSmartFormApp" base="wpExtension">
+    <element name="validation-definitions" type="wpAppValidationDefinitionList"
+             minOccurs="1" maxoccurs="1" />
+    <element name="variables" type="wpAppVariableList"
+             minOccurs="1" maxoccurs="1" />
+    <element name="views" type="wpAppViewList" minOccurs="1" maxoccurs="1" />
+    <element name="controllers" type="wpAppControllerFolder" minOccurs="1"
+             maxOccurs="1"/>
+    <element name="routes" type="wpAppRouteList" minOccurs="1"
+             maxOccurs="1" />
+    <element name="resource-links" type="wpAppResourceLinks" maxOccurs="1" />
+    <element name="dependencies" type="wpAppDependencies" maxOccurs="1" />
+  </complexType>
+
+  <!-- Define validations -->
+  <complexType name="wpAppValidationDefinitionList" edittype="sheet" icon="table.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apvdl"/>
+    <element name="validation-definition" type="wpAppValidationDefinition" />
+  </complexType>
+
+  <!-- Define single validation -->
+  <complexType name="wpAppValidationDefinition" base="wpAppCode" >
+    <attribute name="id" use="auto" type="wpString" value="apvdd"/>
+    <attribute name="name" use="required" type="wpName"/>
+  </complexType>
+
+  <!-- Link validations, visibilities, read only to fields -->
+  <complexType name="wpAppVariableList" edittype="table" icon="table.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apvll"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300,100" />
+
+    <element name="app-variable" type="wpAppVariable" />
+  </complexType>
+
+  <!-- Link single field to validations -->
+  <complexType name="wpAppVariable" edittype="sheet" icon="table.png" lockable="yes" >
+    <attribute name="id" use="auto" type="wpString" value="appvalid"/>
+    <attribute name="name" use="required" type="wpString"/>
+    <attribute name="validations" use="required" type="wpString"/>
+    <element name="visibility" type="wpAppVisibility" />
+    <element name="read-only" type="wpAppReadOnly" />
+    <element name="on-update" type="wpAppOnUpdate" />
+    <element name="app-options" type="wpAppChoiceOptions" />
+    <element name="app-messages" type="wpAppVariableMessages" />
+    <element name="help-text" type="wpAppHelpText" />
+  </complexType>
+
+  <!--  -->
+  <simpleType name="wpAppTextItem" base="wpString" edittype="string" confirmDelete="no" >
+    <attribute name="lang" use="oneof" type="wpString" value="any,en,es,de,fr,it,pt" />
+    <attribute name="is-html-code" use="oneof" value="no,yes" type="wpString" />
+  </simpleType>
+
+  <!-- Define message for a validation for a variable -->
+  <complexType name="wpAppVariableMessages" edittype="sheet" icon="table.png" >
+    <attribute name="id" use="auto" type="wpString" value="apmess"/>
+    <attribute name="validation-name" use="required" type="wpString"/>
+    <element name="message-text" type="wpAppTextItem" />
+  </complexType>
+
+  <!-- Define help text for a variable -->
+  <complexType name="wpAppHelpText" edittype="html" icon="help.png">
+    <attribute name="id" use="auto" type="wpString" value="aphlptxt"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+  </complexType>
+
+  <!-- Define single visibility -->
+  <complexType name="wpAppVisibility" base="wpAppCode" >
+    <attribute name="id" use="auto" type="wpString" value="apvis"/>
+  </complexType>
+
+  <!-- Define single readonly -->
+  <complexType name="wpAppReadOnly" base="wpAppCode" >
+    <attribute name="id" use="auto" type="wpString" value="apvis"/>
+  </complexType>
+
+  <!-- Define single on update -->
+  <complexType name="wpAppOnUpdate" base="wpAppCode" >
+    <attribute name="id" use="auto" type="wpString" value="apvis"/>
+  </complexType>
+
+  <!-- Define single choice options query -->
+  <complexType name="wpAppChoiceOptions" base="wpAppCode" >
+    <attribute name="id" use="auto" type="wpString" value="apvis"/>
+  </complexType>
+
+  <!-- Define Messages -->
+  <complexType name="wpAppMessageList" edittype="table" icon="table.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apvisl"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300,100" />
+
+    <element name="indv-message" type="wpAppMessage" />
+  </complexType>
+
+  <!-- Define single message -->
+  <complexType name="wpAppMessage" base="" >
+    <attribute name="id" use="auto" type="wpString" value="apvis"/>
+    <attribute name="name" use="required" type="wpString"/>
+    <element name="text" use="default" type="wpStringL" minOccurs="1"/>
+  </complexType>
+
+  <!-- ========================= END SMARTFORMS ================================= -->
+
+
+  <!-- Resource links included inview -->
+  <complexType name="wpAppResourceLinks"
+               edittype="table"
+               icon="picture_link.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apvisl"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300" />
+
+    <element name="resource-link" type="wpAppResourceLink" />
+  </complexType>
+
+  <!-- Single resource link -->
+  <complexType name="wpAppResourceLink" base="" >
+    <attribute name="id" use="auto" type="wpString" value="apvis"/>
+    <attribute name="type" use="oneof" value="javascript,css,alternate css" type="wpString"/>
+    <attribute name="link" use="required" type="wpString"/>
+  </complexType>
+
+  <!-- Dependencies included inview -->
+  <complexType name="wpAppDependencies" edittype="table" icon="table.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apvisl"/>
+    <attribute name="column-widths" use="default" type="wpString" value="120,300,100" />
+
+    <element name="dependency" type="wpAppDependency" />
+  </complexType>
+
+  <!-- Single dependency -->
+  <complexType name="wpAppDependency" base="" >
+    <attribute name="id" use="auto" type="wpString" value="apvis"/>
+    <attribute name="package" use="required" type="wpString"/>
+    <attribute name="version" use="required" type="wpString"/>
+  </complexType>
+
+
+  <!-- =============================== CORE STANDARD NODES ====================== -->
+  <!-- all the standard core nodes are declared below. This includes basic content
+       blocks in HTML, code nodes, navigation nodes.
+  -->
+
+  <complexType name="wpHtml"
+               edittype="html"
+               icon="page_white_text.png"
+               lockable="yes">
+
+    <attribute name="id" use="auto" type="wpString" value="html"/>
+    <attribute name="name" use="optional" type="wpString"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+
+    <message type="help" lang="english">
+      <p>
+        This node allows for free editing of RichText in HTML format.
+        This is in effect a node which may contain formatted text, as well as images.
+        Edit this node in a convenient RichText editor.
+      </p>
+      <p>
+        Add images by clicking on the "add image" button in the editor's toolbox.
+      </p>
+    </message>
+
+  </complexType>
+
+  <complexType name="wpPageHtml" base="wpHtml">
+    <attribute name="show-in" use="oneof" value="main,related1,related2,related3,related4,sidebar-left,sidebar-right" type="wpString"/>
+    <attribute name="show" use="oneof" value="yes,no" type="wpString"/>
+  </complexType>
+
+
+  <complexType name="wpLanguageSelector" icon="input.png"/>
+
+  <complexType name="wpRaw" icon="script_code.png" edittype="raw">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+  </complexType>
+
+  <complexType name="wpPageRaw" icon="script_code.png" base="wpRaw">
+    <attribute name="name" use="optional" type="wpName"/>
+    <attribute name="show-in" use="oneof" value="main,related1,related2,related3,related4,related5" type="wpString"/>
+  </complexType>
+
+  <complexType name="wpCopyrights" icon="input.png"/>
+
+  <complexType name="wpShorttitle" base="wpString" edittype="string" icon="input.png">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="show-in-title" use="oneof" value="yes,no" type="wpString"/>
+  </complexType>
+
+  <complexType name="wpWebPhrases" edittype="table" icon="table.png">
+    <element name="phrase" type="wpWebPhrase"/>
+  </complexType>
+
+  <complexType name="wpWebPhrase" icon="input.png">
+    <attribute name="name" type="wpString" use="oneof" value="emailtofriend,printerfriendly"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="value" type="wpString" />
+    <attribute name="linkable" use="hide" value="true" type="string" />
+  </complexType>
+
+  <complexType name="wpMetaTag" edittype="sheet" icon="bullet_green.png">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="name" use="required" type="wpString"/>
+    <attribute name="content" use="required" type="wpString"/>
+    <attribute name="include-in" use="oneof" value="all-pages,top-level-pages,specific-pages" type="wpString"/>
+    <attribute name="specific-pages" use="optional" type="wpString"/>
+  </complexType>
+
+  <complexType name="wpWebdestination" edittype="attributes" icon="server_connect.png">
+
+    <attribute name="hostname" type="wpString" use="required"/>
+    <attribute name="htmlroot" type="wpString" use="optional"/>
+    <attribute name="login" type="wpString" use="required"/>
+    <attribute name="password" type="wpString" use="password"/>
+    <attribute name="destdir" type="wpString" use="required"/>
+    <attribute name="localdir" type="wpString" use="oneof" value="web,wap"/>
+    <attribute name="default-file-perms" type="wpString" use="oneof" value="644,755"/>
+    <attribute name="host-email" type="wpString" use="optional"/>
+    <attribute name="enable-session-tracking" type="wpString" use="oneof" value="no,yes"/>
+    <attribute name="active" type="wpString" use="oneof" value="yes,no"/>
+    <attribute name="supports-php" type="wpString" use="oneof" value="no,yes"/>
+    <attribute name="supports-cgi" type="wpString" use="oneof" value="no,yes"/>
+    <attribute name="supports-mysql" type="wpString" use="oneof" value="no,yes"/>
+
+    <element name="file-prefix" type="wpRaw" maxOccurs="1"/>
+
+  </complexType>
+
+  <complexType name="wpCommonContent" edittype="sheet" icon="folder.png" lockable="yes">
+    <attribute name="name" type="wpString" use="oneof" value="common-content,content"/>
+    <element name="page" type="wpPage" />
+    <element name="meta-info" type="wpMetaInfo" max-occurs="1"/>
+  </complexType>
+
+  <complexType name="wpDesigns" edittype="sheet" icon="layout_header.png" lockable="yes">
+    <element name="design" type="wpDesign" />
+    <element name="theme" type="wpTheme" />
+    <element name="folder" type="wpCommonContent" maxOccurs="1" />
+  </complexType>
+
+  <complexType name="wpMetaInfo" edittype="sheet" icon="layout_header.png">
+    <attribute name="name" type="wpName" />
+  </complexType>
+
+  <complexType name="wpThemes" edittype="sheet" icon="layout_header.png" lockable="yes">
+    <element name="theme" type="wpTheme" />
+  </complexType>
+
+  <complexType name="wpTheme" edittype="sheet" icon="layout_header.png" lockable="yes">
+    <attribute name="name" use="required" type="wpName" />
+    <attribute name="id" use="auto" value="design" type="wpString"/>
+    <element name="template" type="wpThemeTemplate" />
+  </complexType>
+
+  <complexType name="wpThemeTemplate" icon="script_code.png" edittype="raw">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="name" use="required" type="wpName" />
+  </complexType>
+
+  <complexType name="wpDesign" edittype="sheet" icon="layout_header.png" lockable="yes">
+
+    <attribute name="name" use="required" type="wpName" />
+    <attribute name="id" use="auto" value="design" type="wpString"/>
+    <attribute name="optimize-images" use="oneof" value="auto,speed,quality"/>
+
+    <element name="canvas" type="wpCanvas" />
+    <element name="custom-template" type="wpThemeTemplate"/>
+    <element name="content" type="wpCommonContent" maxOccurs="1" />
+
+  </complexType>
+
+  <complexType name="wpMenu" edittype="sheet" icon="sitemap_color.png">
+    <attribute name="id" use="auto" type="wpString" value="menu"/>
+    <attribute name="layout" use="oneof" value="horizontal, vertical" />
+    <attribute name="align" use="oneof" value="left,center,right" />
+    <attribute name="width" use="oneof" value="100%,default" />
+    <attribute name="spacing" use="default" type="wpNum" value="0"/>
+    <attribute name="vertical-spacing" use="default" type="wpNum" value="0"/>
+    <attribute name="root-page" use="default" type="wpString" value="/pages"/>
+    <attribute name="indent-character" use="optional" type="wpString" />
+    <attribute name="num-levels" use="default" type="wpNum" value="999" />
+    <attribute name="expand-first-level" use="oneof" type="wpString" value="no,yes" />
+    <attribute name="indent-on-wrap" use="oneof" type="wpString" value="yes,no" />
+
+    <element name="font" type="wpMenuFontDefinition" minOccurs="1" />
+
+  </complexType>
+  
+  <complexType name="wpImage" edittype="image" icon="picture.png" lockable="yes">
+    <attribute name="id" use="auto" value="img"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <!-- don't show these, client will still add them. -->
+    <attribute name="src" use="hide"/>
+    <attribute name="width" use="hide" />
+    <attribute name="height" use="hide" />
+    <element name="width" type="wpString" maxOccurs="1"/>
+    <element name="height" type="wpString" maxOccurs="1"/>
+    <element name="border" type="wpString" maxOccurs="1"/>
+  </complexType>
+
+  <complexType name="wpFile" icon="attach.png" edittype="sheet" lockable="yes">
+    <attribute name="id" use="auto" value="file" />
+    <attribute name="name" use="required" type="wpFileName"/>
+    <attribute name="hidden" use="oneof" value="yes,no" type="wpBoolean"/>
+    <attribute name="show-icon" use="oneof" value="no,yes" type="wpBoolean"/>
+    <!--ML jan2006
+<attribute name="show-name" use="oneof" value="yes,no" type="wpBoolean"/>
+-->
+    <element name="title" type="wpStringL" />
+    <element name="icon" type="wpImage" maxOccurs="1"/>
+  </complexType>
+
+
+  <complexType name="wpShorttitle" base="wpString" edittype="string" icon="input.png">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="show-in-title" use="oneof" value="yes,no" type="wpString"/>
+  </complexType>
+
+
+  <complexType name="wpHTMLForm"
+               edittype="form"
+               base="wpHtml"
+               confirmDelete="yes"
+               icon="application_form.png">
+
+    <attribute name="name" use="required" type="wpName"/>
+    <attribute name="id" use="auto" value="web" type="wpString"/>
+    <attribute name="show-in" use="oneof" value="main,related1,related2,related3,related4,related5" type="wpString"/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="layout-form-width" use="default" value="100%" type="wpNumPercent"/>
+    <attribute name="layout-form-align" use="oneof" value="left,center,right" type="wpString"/>
+    <attribute name="layout-label-width" use="default" value="50%" type="wpNumPercent"/>
+
+  </complexType>
+
+  <complexType name="wpRepository"
+               edittype="sheet"
+               icon="table.png"
+               hideChildren="no"
+               confirmDelete="yes"
+               lockable="yes">
+
+    <attribute name="id" use="auto" type="wpString" value="evlst"/>
+    <attribute name="name" use="required" type="wpString"/>
+    <attribute name="useraccess" use="optional" type="wpString"/>
+    <attribute name="groupaccess" use="default" value="all:r" type="wpString"/>
+
+    <element name="html" type="wpHtml"/>
+
+  </complexType>
+
+
+  <!-- =============================== SIMPLE TYPES ====================== -->
+  <!-- simpleType definitions are used for attribute validation and basic
+       content definitions. They form the basis of the WebPal Node XSD. -->
+
+
+  <simpleType name="wpFileName" base="string" edittype="string" icon="input.png">
+    <pattern value="%filename:All Files (*.*)"/>
+  </simpleType>
+
+  <simpleType name="wpImageFileName" base="string" edittype="string" icon="input.png">
+    <pattern value="%filename:Image Files (*.jpg *.gif *.png *.bmp)"/>
+  </simpleType>
+
+  <simpleType name="wpColor" base="string" edittype="string" icon="input.png">
+    <pattern value="%color:"/>
+  </simpleType>
+
+
+  <complexType name="wpPdf" base="wpFile" icon="pdf.png" lockable="yes">
+    <attribute name="name" use="required" type="wpPdfName"/>
+  </complexType>
+
+  <simpleType name="wpPdfName" base="string" edittype="string" icon="input.png">
+    <pattern value="%filename:Pdf Files (*.pdf *.PDF *.Pdf)"/>
+  </simpleType>
+
+  <complexType name="wpWordFile" base="wpFile" icon="wordfile.png" lockable="yes">
+    <attribute name="name" use="required" type="wpWordFileName"/>
+  </complexType>
+
+  <simpleType name="wpWordFileName" base="string" edittype="string" icon="input.png">
+    <pattern value="%filename:Word Files (*.doc *.DOC *.Doc *.dot *.DOT *.rtf *.Rtf *.RTF *.wpd *.Wpd *.WPD)"/>
+  </simpleType>
+
+  <complexType name="wpHtmlFile" base="wpFile" icon="page_code.png" lockable="yes">
+    <attribute name="name" use="required" type="wpHtmlFileName"/>
+  </complexType>
+
+  <simpleType name="wpHtmlFileName" base="string" edittype="string" icon="input.png">
+    <pattern value="%filename:HTML Files (*.html)"/>
+  </simpleType>
+
+  <complexType name="wpXls" base="wpFile" icon="excel.png" lockable="yes">
+    <attribute name="name" use="required" type="wpXlsName"/>
+  </complexType>
+
+  <simpleType name="wpXlsName" base="string" edittype="string" icon="input.png">
+    <pattern value="%filename:Xls Files (*.xls *.Xls *.XLS)"/>
+  </simpleType>
+
+  <complexType name="wpTxt" base="wpFile" icon="txt.png" lockable="yes">
+    <attribute name="name" use="required" type="wpTxtName"/>
+  </complexType>
+
+  <simpleType name="wpTxtName" base="string" edittype="string" icon="input.png">
+    <pattern value="%filename:Txt Files (*.txt *.Txt *.TXT)"/>
+  </simpleType>
+
+  <simpleType name="wpBoolean" base="string" edittype="string" icon="input.png">
+    <pattern value="^((yes)|(no))$"/>
+
+    <message type="help" lang="english">
+      <p>
+        The value of this node may be 'yes' or 'no'.
+      </p>
+    </message>
+
+  </simpleType>
+
+  <simpleType name="wpDate" base="string" edittype="string" icon="date.png">
+<!--     <pattern value="^\d{1,8}$"/> -->
+    <format>yyyy-mm-dd</format>
+
+    <message type="pattern">
+      <p>
+        The correct pattern for this node is: <b>yyyymmdd</b><br/>
+      </p>
+      <p>
+        <font color="blue"> Jan 15, 2001 is written as 20010115.</font>
+      </p>
+    </message>
+
+    <message type="help" lang="english">
+      <p>
+        The value of this node is date in 8-digit form of yyyymmdd.
+      </p>
+      <p>
+        <font color="blue">Examples: Jan 15, 2001 is written as 20010115.</font>
+      </p>
+    </message>
+
+  </simpleType>
+
+  <simpleType name="wpTime" base="string" edittype="string" icon="clock.png">
+<!--     <pattern value="^\d{2,2}:{2,2}$"/> -->
+    <format>HH:ii:ss</format>
+
+    <message type="pattern">
+      <p>
+        The correct pattern for this type is: <b>hh:mm</b><br/>
+        Examples: 08:58 , 12:35 , 23:11.
+      </p>
+    </message>
+    <message type="help" lang="english">
+      <p>
+        The value of this node is date in the format of <b>hh:mm</b>.
+      </p>
+      <p>
+        <font color="blue">Examples: 08:58 , 12:35 , 23:11.</font>
+      </p>
+    </message>
+
+  </simpleType>
+
+  <!-- type: wpName ==============================   -->
+  <!--  == Used for file names or directory namees -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpName" base="string" edittype="string" icon="input.png">
+    <pattern value="^[A-Za-z_][A-Za-z0-9_.-]*$"/>
+    <message type="pattern">
+      <p>
+        The correct pattern for this type is: <b>first character [A - z] or [_]  , next
+        characters can be [A-z] , [0-9] , [_] , [-] and [.]</b><br/>
+        Examples: myfile.txt , _output , script45.pl.
+      </p>
+    </message>
+    <message type="help" lang="english">
+      <p>
+        This node is used as an identifier and can only contain characters a-z, A-Z,
+        underscores (_) or a period.
+      </p>
+      <p>
+        <font color="blue">Examples: my_page1, news3, products</font>
+      </p>
+    </message>
+
+  </simpleType>
+
+  <!-- type: wpPageName ==============================   -->
+  <!--  == Used for file names or directory namees -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpPageName" base="string" edittype="string" icon="input.png">
+    <pattern value="^[A-Za-z_][A-Za-z0-9_.-]*$"/>
+    <message type="pattern">
+      <p>
+        The correct pattern for this type is: <b>first character [A - z] or [_]  , next
+        characters can be [A-z] , [0-9] , [_] and [.]</b><br/>
+        Examples: myfile.txt , _output , script45.pl.
+      </p>
+    </message>
+    <message type="help" lang="english">
+      <p>
+        This node is used as an identifier and can only contain characters a-z, A-Z,
+        underscores (_) or a period.
+      </p>
+      <p>
+        <font color="blue">Examples: my_page1, news3, products</font>
+      </p>
+    </message>
+
+  </simpleType>
+
+  <!-- type: wpString ==============================  -->
+  <!--  == a string containing anything                -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpString" base="string" edittype="string" icon="input.png">
+    <pattern value="(.)*"/>
+    <message type="help" lang="english">
+      <p>
+        This node is a simple string value. Type any text here, but it is
+        not possible to add any sub-nodes to this node.
+      </p>
+    </message>
+  </simpleType>
+
+  <!-- type: wpStringL ==============================  -->
+  <!--  == a string containing anything, language sensitive -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpStringL" base="wpString" edittype="string" icon="input.png">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+  </simpleType>
+
+
+  <simpleType name="wpPassword" base="string" edittype="password">
+    <pattern value="^(\d\w){1,5}$"/>
+    <message type="pattern">
+      <p>
+        The correct pattern for this type is: the minimum number of characters <b>5</b>
+        allowed characters are <b>[A-z]</b> and <b>[0-9] </b><br/>
+        Examples: 234g5ty6, mypassword.
+      </p>
+    </message>
+    <message type="help" lang="english">
+      <p>
+        This value is a read-protected password entry and will conceal
+        its value once entered.
+      </p>
+    </message>
+
+  </simpleType>
+
+  <!-- type: wpNum ==============================   -->
+  <!--  == a number, float or int                     -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpNum" base="float" edittype="string" icon="input.png">
+    <pattern value="^(\d{1,9})(\.{1}\d{1,3})$"/>
+    <message type="pattern">
+      <p>
+        The correct pattern for this type is:<b>[0-9].[0-9]</b> negative values are not allowed<br/>
+        Examples: 0, 3.45, 21, 0.1.
+      </p>
+    </message>
+
+    <message type="help" lang="english">
+      <p>
+        This node accepts values in the form of integer numbers.
+      </p>
+      <p>
+        <font color="blue">Examples: 0, 345, 21.</font>
+      </p>
+    </message>
+
+  </simpleType>
+
+  <!-- type: wpNumPercent ==============================   -->
+  <!--  == a number, float or int or percentage            -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpNumPercent" base="float" edittype="string" icon="input.png">
+    <pattern value="^(\-?)(\d+)(\.\d+)?%?$"/>
+  </simpleType>
+
+  <!-- type: wpEmail ==============================  -->
+  <!--  == element containing a valid email              -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpEmail" base="string" edittype="string" icon="input.png">
+    <pattern value="^\S*@\S*\.\S*$"/>
+    <message type="pattern">
+      <p>
+        The correct pattern for this type is:
+        <b>[any alphanumeric characters]@[A-z, 0-9].[at most 3 characters out of A-z]</b>
+        <br/>
+        Examples: myname@yahoo.com, john2002@usa.net.
+      </p>
+    </message>
+
+    <message type="help" lang="english">
+      <p>
+        Specify a valid email in this node.
+      </p>
+      <p>
+        <font color="blue">Examples: myname@somewhere.com, john2002@canoe.ca</font>
+      </p>
+    </message>
+
+  </simpleType>
+
+  <!-- type: wpHttpUrl ============================== -->
+  <!--  == element containing a valid http url           -->
+  <!--  =============================================- -->
+
+  <simpleType name="wpHttpUrl" base="string" edittype="string" icon="input.png">
+    <pattern value="^http://.*$"/>
+
+    <message type="help" lang="english">
+      <p>
+        Specify a valid HTTP Url in this node.
+      </p>
+      <p>
+        <font color="blue">Examples: http://www.palominosys.com, http://123.342.42.4, http://yahoo.com</font>
+      </p>
+    </message>
+
+  </simpleType>
+
+</schema>
+]]></node-schema>

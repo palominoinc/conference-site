@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="TwitterFeed\Controllers\TwitterController@index" filter="" id="routxg_lJGD9lNRP" name="twitter.feeds" parameters="" pattern="/twitter/feeds" verb="get" webpalschematype="wpAppRoute"/>

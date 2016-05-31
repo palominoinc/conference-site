@@ -1,0 +1,477 @@
+<?xml version="1.0"?>
+<stylesheet id="stylVxtkOQ0GkxHs" lang="any" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<?xml version="1.0"?>
+<!DOCTYPE xsl:stylesheet [
+<!ENTITY nbsp "&#160;" >
+]>
+
+<!-- (c) 2001-present All Copyrights Palomino System Innovations Inc.
+Illegal reproduction and disclosure will be prosecuted  -->
+
+<xsl:stylesheet
+                version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:wp="http://www.palominosys.com/wp"
+                xmlns:php="http://php.net/xsl"
+                xmlns:date="http://exslt.org/dates-and-times"
+                xmlns:exsl="http://exslt.org/common"
+                extension-element-prefixes="exsl"
+                >
+
+  <!-- ========================================================================================= -->
+  <!-- ===================================== slider template =================================== -->
+  <!-- ========================================================================================= -->
+
+  <xsl:template match="slideshow">
+
+<!--     <link rel="stylesheet" href="?f=extensions/wpSlideshow_v1/WpSlideshowV1/Resources/flexslider.css"/> -->
+
+    <!-- Include js plugin -->
+    <!--     <script src="?f=extensions/wpSlideshow_v1/WpSlideshowV1/Resources/flexslider-min.js"></script> -->
+
+
+
+    <xsl:if test="@use-custom-style='yes'">
+      <xsl:value-of disable-output-escaping="yes" select="css-snippet/text()"/>
+    </xsl:if>
+
+    <!-- main slider container -->
+    <!--     <div class="bg-slider-wrapper"> -->
+    <div>
+      <div id="{./@name}" class="flexslider bg-slider">
+        <ul class="slides">
+          <xsl:apply-templates select="slide" mode="single-slide">
+            <xsl:with-param name="is-preview-box" select="boolean(0)"/>
+            <xsl:with-param name="custom-content" select="@use-custom-slide-content"/>
+            <xsl:with-param name="enable-preview" select="@enable-preview"/>
+            <xsl:with-param name="detached-preview-box" select="@detached-preview-box"/>
+            <xsl:with-param name="enable-caption" select="@enable-caption"/>
+            <xsl:with-param name="layout" select="@slider-options" />
+          </xsl:apply-templates>
+        </ul>
+      </div>
+    </div>
+
+    <!-- slider preview container here if set to have a seperate thumbnail preview box -->
+    <xsl:if test="@detached-preview-box='yes'">
+      <xsl:variable name="carouselContainerID">
+        <xsl:choose>
+          <xsl:when test="@preview-box-container!=''"><xsl:value-of select="@preview-box-container"/></xsl:when>
+          <xsl:otherwise><xsl:value-of select="string('carousel')"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
+      <div id="{$carouselContainerID}" class="flexslider">
+        <ul class="slides">
+          <xsl:apply-templates select="slide" mode="single-slide">
+            <xsl:with-param name="is-preview-box" select="boolean(1)"/>
+          </xsl:apply-templates>
+        </ul>
+      </div>
+    </xsl:if>
+
+    <!-- javascript code for triggering flexslider.js for the available slider containers -->
+    <xsl:apply-templates select="." mode="js"/>
+
+  </xsl:template>
+
+  <!-- ========================================================================================= -->
+  <!-- ================================ individual slide template ============================== -->
+  <!-- ========================================================================================= -->
+
+  <xsl:template match="slide" mode="single-slide">
+    <xsl:param name="is-preview-box"/>
+    <xsl:param name="custom-content"/>
+    <xsl:param name="enable-preview"/>
+    <xsl:param name="detached-preview-box"/>
+    <xsl:param name="enable-caption"/>
+    <xsl:param name="layout" />
+
+    <!-- determine whether slide should have a thumbnail, if so, find its path -->
+    <xsl:variable name="thumbnail">
+      <xsl:choose>
+        <xsl:when test="not($is-preview-box) and $enable-preview='yes' and $detached-preview-box='no'">
+          <xsl:choose>
+            <xsl:when test="image/thumbnail"><xsl:value-of select="concat('?f=',image/thumbnail/@src,'&quot;')"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="concat('?f=',image/@src,'&quot;')"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="''"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="override-layout">
+      <xsl:choose>
+        <xsl:when test="./@slide-layout and ./@slide-layout!=''">
+          <xsl:value-of select="boolean('true')" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="boolean('false')" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    
+<!--         <xsl:if test="image"> -->
+<!--     <xsl:variable name="background">
+      <xsl:value-of select="concat('?f=',image/@src)" />
+    </xsl:variable> -->
+<!--         </xsl:if> -->
+       
+    <xsl:variable name="slide-type">
+      <xsl:choose>
+        <xsl:when test="./@slide-layout='option1'">homepage-slide</xsl:when>
+        <xsl:when test="./@slide-layout='option2'">innerpage-slide</xsl:when>
+        <xsl:otherwise></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+
+    <!-- override?: <xsl:value-of select="$override-layout" /> -->
+
+
+    <!-- display slide -->
+
+    <xsl:choose>
+      <xsl:when test="$override-layout and ./@slide-layout='option1'">
+        
+        
+        <!-- individual slide layout goes here -->
+        <li class="{$slide-type}" data-thumb="{$thumbnail}">
+<!--         <li class="{$slide-type}" data-thumb="{$thumbnail}" style="background:url('{$background}') no-repeat 50% top;"> -->
+          
+          <xsl:if test="image">
+            <xsl:variable name="image-path">
+              <xsl:value-of select="image/@src"/>
+            </xsl:variable>
+            <div class="sliderImage option1" style="background-image: url(?f={$image-path});"></div>
+          </xsl:if>
+          
+          <!-- slide caption here -->
+          <xsl:if test="not($is-preview-box) and $enable-caption='yes' and text">
+            <div class="flex-caption">
+              <div class="container">
+                <div class="row">
+
+                  <div class="col-xs-12 slider-content">
+                    <div class="slider-text">
+                      <xsl:if test="title">
+                        <h3><xsl:value-of select="title"/></h3>
+                      </xsl:if>
+                      <xsl:if test="description">
+                        <p><xsl:value-of select="description"/></p>
+                      </xsl:if>
+                      <xsl:if test="text">
+                        <xsl:copy-of select="text"/>
+                      </xsl:if>
+                    </div>
+                    <div class="slider-buttons">
+                      <xsl:if test="buttons">
+                        <xsl:for-each select="buttons">
+                          <xsl:variable name="size-code">
+                            <xsl:choose>
+                              <xsl:when test="@button-size='medium'">
+                                <xsl:value-of select="'md'" />
+                              </xsl:when>
+                              <xsl:when test="@button-size='small'">
+                                <xsl:value-of select="'sm'" />
+                              </xsl:when>
+                              <xsl:when test="@button-size='large'">
+                                <xsl:value-of select="'lg'" />
+                              </xsl:when>
+                              <xsl:otherwise>
+                                <xsl:value-of select="'lg'" />
+                              </xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <a class="{@button-colour} btn btn-{$size-code}" href="{@button-link}"><xsl:value-of select="@button-title" /></a>
+                        </xsl:for-each>
+                      </xsl:if>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </xsl:if>
+        </li>
+      </xsl:when>
+      <xsl:when test="$override-layout and ./@slide-layout='option2'">
+        
+        <!-- individual slide layout goes here -->
+        <li class="{$slide-type}" data-thumb="{$thumbnail}" >
+<!--         <li class="{$slide-type}" data-thumb="{$thumbnail}" style="background:url('{$background}') no-repeat 50% top;"> -->
+          
+          <xsl:if test="image">
+            <xsl:variable name="image-path">
+              <xsl:value-of select="image/@src"/>
+            </xsl:variable>
+            <div class="sliderImage option2" style="background-image: url(?f={$image-path});"></div>
+          </xsl:if>
+
+          <!-- slide image here -->
+<!--           <xsl:if test="image">
+            <xsl:text disable-output-escaping="yes">&lt;img src="</xsl:text>
+            <xsl:value-of select="concat('?f=',image/@src)"/>
+            <xsl:text disable-output-escaping="yes">"/&gt;</xsl:text>
+          </xsl:if> -->
+          <!-- slide caption here -->
+          <xsl:if test="not($is-preview-box) and $enable-caption='yes'">
+            <div class="flex-caption-option2">
+
+              <div class="col-xs-12 slider-content">
+                <div class="slider-text">
+                  <xsl:if test="title">
+                    <h3><xsl:value-of select="title"/></h3>
+                  </xsl:if>
+                  <xsl:if test="description">
+                    <p><xsl:value-of select="description"/></p>
+                  </xsl:if>
+                  <xsl:if test="text">
+                    <xsl:copy-of select="text"/>
+                  </xsl:if>
+                </div>
+              </div>
+            </div>
+          </xsl:if>
+
+        </li>
+      </xsl:when>
+      <xsl:when test="$layout='option1'">
+        <li class="{$slide-type}" data-thumb="{$thumbnail}">
+          <xsl:if test="image">
+            <xsl:variable name="image-path">
+              <xsl:value-of select="image/@src"/>
+            </xsl:variable>
+            <div class="sliderImage option2" style="background-image: url(?f={$image-path});"></div>
+          </xsl:if>
+          
+          <xsl:choose>
+            <xsl:when test="$custom-content='yes' and slide-content">
+              <xsl:value-of disable-output-escaping="yes" select="slide-content/text()"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <!-- slide image here -->
+<!--               <xsl:if test="image">
+                <xsl:text disable-output-escaping="yes">&lt;img src="</xsl:text>
+                <xsl:value-of select="concat('?f=',image/@src)"/>
+                <xsl:text disable-output-escaping="yes">"/&gt;</xsl:text>
+              </xsl:if> -->
+              <!-- slide caption here -->
+              <xsl:if test="not($is-preview-box) and $enable-caption='yes'">
+                <div class="flex-caption">
+
+                  <div class="col-sm-7 slider-content">
+                    <xsl:if test="title">
+                      <h3><xsl:value-of select="title"/></h3>
+                    </xsl:if>
+                    <xsl:if test="description">
+                      <p><xsl:value-of select="description"/></p>
+                    </xsl:if>
+                    <xsl:if test="text">
+                      <xsl:copy-of select="text"/>
+                    </xsl:if>
+                  </div>
+
+                  <div class="col-sm-5 slider-buttons">
+                    <xsl:if test="buttons">
+                      <xsl:for-each select="buttons">
+                        <xsl:variable name="size-code">
+                          <xsl:choose>
+                            <xsl:when test="@button-size='medium'">
+                              <xsl:value-of select="'md'" />
+                            </xsl:when>
+                            <xsl:when test="@button-size='small'">
+                              <xsl:value-of select="'sm'" />
+                            </xsl:when>
+                            <xsl:when test="@button-size='large'">
+                              <xsl:value-of select="'lg'" />
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:value-of select="'lg'" />
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:variable>
+                        <a class="{@button-colour} btn btn-{$size-code}" href="{@button-link}"><xsl:value-of select="@button-title" /></a>
+                      </xsl:for-each>
+                    </xsl:if>
+
+                  </div>
+
+                  <!-- 
+                     <xsl:if test="title">
+                       <h3><xsl:value-of select="title"/></h3>
+                     </xsl:if>
+                     <xsl:if test="description">
+                       <p><xsl:value-of select="description"/></p>
+                     </xsl:if>
+                     <xsl:if test="text">
+                       <xsl:copy-of select="text"/>
+                     </xsl:if>
+                     <xsl:if test="slide-content">
+                     <xsl:value-of disable-output-escaping="yes" select="slide-content/text()"/>
+                     </xsl:if>
+                  -->
+                </div>
+              </xsl:if>
+            </xsl:otherwise>
+          </xsl:choose>
+        </li>
+      </xsl:when>
+      <xsl:when test="$layout='option2'">
+        <!-- your inner layout goes here -->
+
+        <li class="{$slide-type}" data-thumb="{$thumbnail}" >
+          
+          <xsl:if test="image">
+            <xsl:variable name="image-path">
+              <xsl:value-of select="image/@src"/>
+            </xsl:variable>
+            <div class="sliderImage option2" style="background-image: url(?f={$image-path});"></div>
+          </xsl:if>
+          
+          <xsl:choose>
+            <xsl:when test="$custom-content='yes' and slide-content">
+              <xsl:value-of disable-output-escaping="yes" select="slide-content/text()"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <!-- slide image here -->
+<!--               <xsl:if test="image">
+                <xsl:text disable-output-escaping="yes">&lt;img src="</xsl:text>
+                <xsl:value-of select="concat('?f=',image/@src)"/>
+                <xsl:text disable-output-escaping="yes">"/&gt;</xsl:text>
+              </xsl:if> -->
+              <!-- slide caption here -->
+              <xsl:if test="not($is-preview-box) and $enable-caption='yes'">
+                <div class="flex-caption">
+
+                  <div class="col-sm-5 inner-slider-content">
+                    <xsl:if test="text">
+                      <xsl:copy-of select="text"/>
+                    </xsl:if>
+                    <xsl:if test="buttons">
+                      <xsl:for-each select="buttons">
+                        <xsl:variable name="size-code">
+                          <xsl:choose>
+                            <xsl:when test="@button-size='medium'">
+                              <xsl:value-of select="'md'" />
+                            </xsl:when>
+                            <xsl:when test="@button-size='small'">
+                              <xsl:value-of select="'sm'" />
+                            </xsl:when>
+                            <xsl:when test="@button-size='large'">
+                              <xsl:value-of select="'lg'" />
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:value-of select="'lg'" />
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:variable>
+                        <a class="{@button-colour} btn btn-{$size-code}" href="{@button-link}"><xsl:value-of select="@button-title" /></a>
+                      </xsl:for-each>
+                    </xsl:if>
+                  </div>
+                  <span class="arrow-right grey-arrow-right innerSliderArrow hidden-xs"></span>
+
+
+                </div>
+              </xsl:if>
+            </xsl:otherwise>
+          </xsl:choose>
+        </li>
+      </xsl:when>
+    </xsl:choose>
+
+  </xsl:template>
+
+  <!-- ========================================================================================= -->
+  <!-- ================================ slider javascript template ============================= -->
+  <!-- ========================================================================================= -->
+
+  <xsl:template match="slideshow" mode="js">
+
+    <xsl:variable name="containerID" select="concat('&quot;#',@name,'&quot;')"/>
+
+    <xsl:variable name="carouselContainerID">
+      <xsl:choose>
+        <xsl:when test="@preview-box-container!=''"><xsl:value-of select="concat('&quot;#',@preview-box-container,'&quot;')"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="'&quot;&quot;'"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="sync">
+      <xsl:choose>
+        <xsl:when test="@detached-preview-box='yes'"><xsl:value-of select="$carouselContainerID"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="'&quot;&quot;'"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="animation" select="concat('&quot;',@slide-animation,'&quot;')"/>
+    <xsl:variable name="easing" select="concat('&quot;',@slide-easing,'&quot;')"/>
+    <xsl:variable name="direction" select="concat('&quot;',@direction,'&quot;')"/>
+
+    <xsl:variable name="controlNav">
+      <xsl:choose>
+        <xsl:when test="@enable-preview='yes'"><xsl:value-of select="concat('&quot;','thumbnails','&quot;')"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="boolean(1)"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <!-- slider preview box needs to be initialized first if a seperate preview box is enabled -->
+    <script type="text/javascript">
+      /* <![CDATA[ */
+   $(document).ready(function() {
+
+  /* ]]]]><![CDATA[> */<xsl:if test="@enable-preview='yes' and @detached-preview-box='yes'"> /* <![CDATA[ */
+
+    $(/* ]]]]><![CDATA[> */<xsl:value-of select="$carouselContainerID"/>/* <![CDATA[ */).flexslider({
+
+   animation: "slide",
+   animationLoop: false,
+   slideshow: false,
+   controlNav: false,
+   directionNav: /* ]]]]><![CDATA[> */<xsl:value-of select="@enable-preview-controls='yes'"/>/* <![CDATA[ */,
+   asNavFor: /* ]]]]><![CDATA[> */<xsl:value-of select="$containerID"/>/* <![CDATA[ */,
+   itemWidth: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@preview-box-item-width))"/>/* <![CDATA[ */,
+   itemMargin: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@preview-box-item-space))"/>/* <![CDATA[ */,
+
+    });
+
+  /* ]]]]><![CDATA[> */ </xsl:if> /* <![CDATA[ */
+
+    $(/* ]]]]><![CDATA[> */<xsl:value-of select="$containerID"/>/* <![CDATA[ */).flexslider({
+
+   animation: /* ]]]]><![CDATA[> */<xsl:value-of select="$animation"/>/* <![CDATA[ */,
+   easing: /* ]]]]><![CDATA[> */<xsl:value-of select="$easing"/>/* <![CDATA[ */,
+   direction: /* ]]]]><![CDATA[> */<xsl:value-of select="$direction"/>/* <![CDATA[ */,
+   animationLoop: /* ]]]]><![CDATA[> */<xsl:value-of select="@repeat='yes'"/>/* <![CDATA[ */,
+   startAt: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@first-slide))"/>/* <![CDATA[ */,
+   slideshow: /* ]]]]><![CDATA[> */<xsl:value-of select="@auto-play='yes'"/>/* <![CDATA[ */,
+   slideshowSpeed: /* ]]]]><![CDATA[> */<xsl:value-of select="@animation-speed-ms"/>/* <![CDATA[ */,
+   animationSpeed: /* ]]]]><![CDATA[> */<xsl:value-of select="@easing-speed-ms"/>/* <![CDATA[ */,
+   initDelay: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@start-delay-ms))"/>/* <![CDATA[ */,
+   randomize: /* ]]]]><![CDATA[> */<xsl:value-of select="@random-slides='yes'"/>/* <![CDATA[ */,
+   pauseOnHover: /* ]]]]><![CDATA[> */<xsl:value-of select="@pause-on-hover='yes'"/>/* <![CDATA[ */,
+   useCSS: /* ]]]]><![CDATA[> */<xsl:value-of select="@css-3-transitions='yes'"/>/* <![CDATA[ */,
+   touch: /* ]]]]><![CDATA[> */<xsl:value-of select="@enable-touch='yes'"/>/* <![CDATA[ */,
+   controlNav: /* ]]]]><![CDATA[> */<xsl:value-of select="$controlNav"/>/* <![CDATA[ */,
+   directionNav: /* ]]]]><![CDATA[> */<xsl:value-of select="@enable-controls='yes'"/>/* <![CDATA[ */,
+   sync: /* ]]]]><![CDATA[> */<xsl:value-of select="$sync"/>/* <![CDATA[ */,
+   itemWidth: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@item-width))"/>/* <![CDATA[ */,
+   itemMargin: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@item-space))"/>/* <![CDATA[ */,
+   maxItems: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@max-items))"/>/* <![CDATA[ */,
+   move: /* ]]]]><![CDATA[> */<xsl:value-of select="php:function('intval',string(@items-per-slide))"/>/* <![CDATA[ */
+
+    });
+
+  });
+  /* ]]]]><![CDATA[> */
+    </script>
+
+  </xsl:template>
+
+</xsl:stylesheet>]]></stylesheet>

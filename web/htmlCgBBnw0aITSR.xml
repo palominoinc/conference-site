@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<html id="htmlCgBBnw0aITSR" lang="any" show="yes" show-in="main" webpalschematype="wpPageHtml"><h1>Read Me</h1>
+
+<hr/><h2>Overview</h2>
+
+<ul><li>Each of the folders<ch value="nbsp"/>under 'thecontent' are corresponding to pages in a website.</li>
+	<li>Each of the pages have a name and shorttitle
+	<ul><li><strong>name </strong>(which is found under attributes, on<ch value="nbsp"/>the<ch value="nbsp"/>panel to the right) is the name of the page while navigating through the website</li>
+		<li><strong>shorttitle </strong>- is the title of the page visible in the navigation<ch value="nbsp"/></li>
+	</ul></li>
+	<li>Each page<ch value="nbsp"/>has a few choices under attributes:
+	<ul><li><strong>design</strong>: 3 designs to choose from. Design with sidebar automatically displaying a twitter feed if you have a twitter handle entered in settings/event/twitter-handle<ch value="nbsp"/>
+		<ul><li>If you are applying 'standard-sidebar' design, you can insert html in a page and set 'show-in' to 'related1' and add some related content in there<ch value="nbsp"/></li>
+		</ul></li>
+		<li><strong>show-in-menu</strong>: yes/no based on if you want a page displayed in the navigation bar</li>
+		<li><strong>index</strong>: should this page/content be indexed by a search engine such as Google</li>
+	</ul></li>
+	<li>
+	<p>Every page has a content area which you have full control over. Here is an overview of the icons at the top of the WYSIWYG<ch value="nbsp"/>editor:</p>
+
+	<p><img alt="" data-file-id="117676929653376769" src="117676929653376769" style="vertical-align:bottom;" title="" width="735"/></p>
+	</li>
+	<li>
+	<p>If you need to add on any subpages, right click on the root page and add new pages.<ch value="nbsp"/></p>
+	</li>
+</ul><p style="margin-left:80px;">&#x200B;<img alt="" data-file-id="152710696330306577" src="152710696330306577" style="vertical-align:bottom;" title="" width="500"/></p>
+
+<ul><li>
+	<p>Preview changes by clicking on the 'preview' button on the right sidebar</p>
+	</li>
+</ul><p style="margin-left:80px;"><img alt="" data-file-id="412973794874482277" src="412973794874482277" style="vertical-align:bottom;" title="" width="900"/>&#x200B;</p>
+
+<ul><li>
+	<p>When ready to take your changes live to your<ch value="nbsp"/>webpage, click on the 'Publish' button</p>
+	</li>
+	<li>
+	<p><strong>NOTE</strong>: contact Palomino if you need assistance with taking your webpage live to your domain.<ch value="nbsp"/></p>
+	</li>
+</ul><hr/><h2>How to edit content? <ch value="nbsp"/> <ch value="nbsp"/></h2>
+
+<p>Every little piece of content is editable on this webpage. Following are few highlights to get you started.<br/>
+<ch value="nbsp"/></p>
+
+<h3>Settings/Event node</h3>
+
+<p>There are few options under this section.</p>
+
+<ul><li>You can set the website colour scheme<ch value="nbsp"/></li>
+	<li>Add in the title of the event - this will show on the top of the home page banner<ch value="nbsp"/>image<ch value="nbsp"/></li>
+	<li>Select the location that your event is<ch value="nbsp"/>taking place in, which will then switch out an appropriate skyline banner image<ch value="nbsp"/></li>
+	<li>Filling in Twitter information will trigger to show your feed on a page with a sidebar (e.g.<ch value="nbsp"/><a data-display-inline="false" href="chapter://page[@id='pageUFURgTxoF1MC']">agenda</a>)</li>
+</ul><p><span style="display:none"><ch value="nbsp"/></span><img alt="" data-file-id="798300259672391025" src="798300259672391025" style="vertical-align:bottom;" title="" width="900"/><br/>
+<ch value="nbsp"/></p>
+
+<p style="text-align:center;"><span style="display:none"><ch value="nbsp"/></span></p>
+
+<h3>Home</h3>
+
+<p><img alt="" data-file-id="182501457119689124" src="182501457119689124" style="margin-right:15px;float:left;" title="" width="169"/>Home has 4 sections that are editable.<ch value="nbsp"/></p>
+
+<p><strong>NOTE:</strong> Please do not change the names of these items as it is required to render on the home page layout and unique styling is also applied based on the names.<ch value="nbsp"/></p>
+
+<p>Expand each layer and you will be<ch value="nbsp"/>able to edit content and its icon within this editable node. Icons can be chosen from a list of <a data-display-inline="false" href="http://fontawesome.io/icons/" target="_blank">FontAwesome Icons</a>.</p>
+
+<p>You have an option to also add in an image, instead of an icon as well. Right click on the 'blockitem' and insert 'image'. You are also allowed to insert as many 'blockitem's as you want<ch value="nbsp"/>and the layout will automatically adjust based on how many items you have.<ch value="nbsp"/></p>
+
+<p>You may notice there is no place to edit the news widget on home page. This widget is populated from news list from <a data-display-inline="false" href="chapter://page[@id='pageYC_1VfOH6mcS']">here</a>. You can edit any content related to news under that page.<ch value="nbsp"/><ch value="nbsp"/><br/>
+<ch value="nbsp"/></p>
+
+<h3>Speakers</h3>
+
+<p>Speakers page has a list node that you are able to use to organize all the speakers attending the event. Edit this table as you would edit an excel sheet. Also, use attributes to organize it in a way that is appropriate for your event.<ch value="nbsp"/></p>
+
+<p><img alt="" data-file-id="201053902092952670" src="201053902092952670" style="vertical-align:bottom;" title="" width="900"/><br/>
+<ch value="nbsp"/></p>
+
+<h3>News</h3>
+
+<p>Similar to speakers page, news is also kept in an editable and friendly table. Use this table to enter all your news items and use attributes to control the way news appears on the webpage.</p>
+
+<p><strong>NOTE</strong>:<ch value="nbsp"/>do not change the name of this list node as the home page news widget is using this exact name to populate the items on that page.<ch value="nbsp"/></p>
+
+<p><img alt="" data-file-id="213266286321351335" src="213266286321351335" style="vertical-align:bottom;" title="" width="900"/><br/>
+<ch value="nbsp"/></p>
+
+<h3>Common</h3>
+
+<p>Under page 'common' you are able to edit logo and footer content which appear on all pages. This page is hidden from navigation.<ch value="nbsp"/></p>
+</html>

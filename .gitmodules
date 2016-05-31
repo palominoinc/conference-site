@@ -1,0 +1,20 @@
+[submodule "files/extensions/extensions-essentials"]
+	path = files/extensions/extensions-essentials
+	url = git@github.com:palominoinc/extensions-essentials.git
+
+[submodule "files/extensions/staff-list"]
+	path = files/extensions/staff-list
+	url = git@github.com:palominoinc/staff-list.git
+
+[submodule "files/extensions/news-list"]
+	path = files/extensions/news-list
+	url = git@github.com:palominoinc/news-list.git
+
+[submodule "files/extensions/website-navigation"]
+	path = files/extensions/website-navigation
+	url = git@github.com:palominoinc/website-navigation.git
+
+[submodule "files/extensions/webpal-core"]
+	path = files/extensions/webpal-core
+	url = git@github.com:palominoinc/webpal-core.git
+

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<node-schema id="wpRaKyfCJBTHUV8d" lang="en" show-in="main" webpalschematype="wpPageRaw"><![CDATA[<schema xmlns="http://www.palominosys.com/wpschema">
+  
+  <complexType extends="wpPage" name="wpPage-wpSlideshow_v1">
+    <element name="slideshow" type="wpSlideshow_v1" folder="gallery"/>
+  </complexType>
+
+
+<!--  ================= wpSlideshow =============== -->
+<!--  == Slideshow schema                        == -->
+<!--  ============================================= -->
+
+<complexType name="wpSlideshow_v1" edittype="sheet" icon="slideshow_images.png" lockable="yes">
+
+        <attribute name="id" use="auto" type="wpString" value="slideshow"/>
+        <attribute name="name" use="default" type="wpString" value="slideshow"/>
+        <attribute name="slider-options" use="oneof" type="wpString" value="option1,option2"/>
+        <attribute name="show-in" use="oneof" type="wpString" value="main,related1,related2,related3,related4,related5"/>
+
+        <attribute name="use-custom-slide-content" use="oneof" type="wpString" value="no,yes"/>
+        <attribute name="use-custom-style" use="oneof" type="wpString" value="no,yes"/>
+
+        <attribute name="auto-play" use="oneof" type="wpString" value="yes,no"/>
+        <attribute name="direction" use="oneof" type="wpString" value="horizontal,vertical"/>
+        <attribute name="repeat" use="oneof" type="wpString" value="yes,no"/>
+        <attribute name="first-slide" use="default" type="wpString" value="0"/>
+        <attribute name="slide-animation" use="oneof" type="wpString" value="slide,fade"/>
+        <attribute name="animation-speed-ms" use="default" type="wpString" value="5000"/>
+        <attribute name="slide-easing" use="oneof" type="wpString" value="swing"/>
+        <attribute name="easing-speed-ms" use="default" type="wpString" value="600"/>
+        <attribute name="start-delay-ms" use="default" type="wpString" value="0"/>
+        <attribute name="random-slides" use="oneof" type="wpString" value="no,yes"/>
+        <attribute name="pause-on-hover" use="oneof" type="wpString" value="yes,no"/>
+        <attribute name="enable-caption" use="oneof" type="wpString" value="no,yes"/>
+        <attribute name="enable-touch" use="oneof" type="wpString" value="no,yes"/>
+        <attribute name="enable-controls" use="oneof" type="wpString" value="yes,no"/>
+        <attribute name="item-width" use="default" type="wpString" value="0"/>
+        <attribute name="item-space" use="default" type="wpString" value="0"/>
+        <attribute name="max-items" use="default" type="wpString" value="0"/>
+        <attribute name="items-per-slide" use="default" type="wpString" value="0"/>
+
+        <attribute name="enable-preview" use="oneof" type="wpString" value="no,yes"/>
+        <attribute name="detached-preview-box" use="oneof" type="wpString" value="no,yes"/>
+        <attribute name="preview-box-container" use="default" type="wpString" value="preview-box"/>
+        <attribute name="preview-box-item-width" use="default" type="wpString" value="150"/>
+        <attribute name="preview-box-item-space" use="default" type="wpString" value="0"/>
+        <attribute name="enable-preview-controls" use="oneof" type="wpString" value="no,yes"/>
+
+        <element name="slide" type="wpSlide_v1" minOccurs="1"/>
+        <element name="css-snippet" use="default" type="wpPageRaw" maxOccurs="1"/>
+
+</complexType>
+
+<!--  =================== wpSlide ================= -->
+<!--  == Slide schema                            == -->
+<!--  ============================================= -->
+
+<complexType name="wpSlide_v1" edittype="sheet" icon="bullet_picture.png" lockable="yes">
+
+        <attribute name="id" use="auto" type="wpString" value="slide"/>
+        <attribute name="name" use="default" type="wpString" value="slide"/>
+        <attribute name="slide-layout" use="oneof" type="wpString" value="option1,option2"/>
+        <element name="title" use="default" type="wpStringL" />
+        <element name="description" use="default" type="wpStringL" />
+        <element name="image" use="default" type="wpImage_v1" maxOccurs="1"/>
+        <element name="slide-content" use="default" type="wpPageRaw" />
+  		<element name="text" use="default" type="wpHtml"/>
+        <element name="buttons" use="default" type="wpButton"/>
+        <element name="thumbnail" use="default" type="wpImage_v1" maxOccurs="1"/>
+
+</complexType>
+
+<!--  =================== wpImage ================= -->
+<!--  == Image schema                            == -->
+<!--  ============================================= -->
+
+<complexType name="wpImage_v1" edittype="image" icon="picture.png" lockable="yes">
+
+        <attribute name="id" use="auto" value="img"/>
+        <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+
+        <!-- don't show these, client will still add them. -->
+        <attribute name="src" use="hide"/>
+        <attribute name="width" use="hide" />
+        <attribute name="height" use="hide" />
+
+        <!--
+        <element name="width" type="wpString" maxOccurs="1"/>
+        <element name="height" type="wpString" maxOccurs="1"/>
+        <element name="border" type="wpString" maxOccurs="1"/>
+        -->
+
+</complexType>
+
+
+<!--  =================== wpButton ================= -->
+<!--  == button schema                            == -->
+<!--  ============================================= -->
+
+<complexType name="wpButton" edittype="sheet" icon="input.png" lockable="yes">
+    <attribute name="button-title" use="default" type="wpString" value=""/>
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="button-colour" use="oneof" value="default,green,black" type="wpString"/>
+    <attribute name="button-size" use="oneof" value="small,medium,large"/>
+    <attribute name="button-link" use="default" type="wpString" value=""/>
+</complexType>
+
+</schema>]]></node-schema>

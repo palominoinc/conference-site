@@ -1,0 +1,108 @@
+<extension name="wpContentBlockList" webpalschematype="wpExtension" id="exteRvUCAIXHNwW2" modifiedBy="sinthu" modified="20160106.101559" node-changed="yes"><stylesheet webpalschematype="wpAppStylesheet" id="stylZr050LJv4AQr" lang="any" show-in="main" modifiedBy="sinthu" modified="20160106.101449">&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl" 
+                xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                &gt;
+
+  &lt;xsl:strip-space elements="*"/&gt; &lt;!-- to get rid of unnecessary whitespace in xml prior to parsing --&gt;
+
+
+
+  &lt;xsl:template match="contentBlock"&gt;
+    
+    
+    &lt;div id="contentBlock" class="contentBlockDiv"&gt;
+      &lt;xsl:if test="text"&gt;
+        &lt;div class="contentBlockText"&gt;
+          &lt;xsl:copy-of select="text"/&gt;
+        &lt;/div&gt;
+      &lt;/xsl:if&gt;
+      
+      &lt;div class="row"&gt;
+        &lt;xsl:apply-templates select="blockItem" mode="blockItem"/&gt;
+
+        &lt;xsl:if test="button"&gt;
+          &lt;xsl:for-each select="button"&gt;
+            &lt;div class="text-center"&gt;
+              &lt;a class="btn btn-cta btn-cta-secondary" href="{@button-link}" target="{@target}"&gt;&lt;xsl:value-of select="@button-title" /&gt;&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/xsl:for-each&gt;
+        &lt;/xsl:if&gt;
+      &lt;/div&gt;
+      
+    &lt;/div&gt;
+  &lt;/xsl:template&gt;
+
+
+  &lt;xsl:template match="contentBlock/blockItem" mode="blockItem"&gt;
+
+    
+    &lt;!-- individual image --&gt;
+    &lt;div class="item col-md-3 col-sm-6 col-xs-12"&gt;
+      &lt;div class="item-inner text-center"&gt;
+        
+        &lt;xsl:if test="icon"&gt;
+    &lt;xsl:variable name="icon-class"&gt;
+      &lt;xsl:value-of select="icon"/&gt;
+    &lt;/xsl:variable&gt;
+    
+        
+        &lt;i class="fa fa-2 fa-{$icon-class}"&gt;
+          &lt;xsl:apply-templates select="image"/&gt;
+        &lt;/i&gt;
+        &lt;/xsl:if&gt;
+        &lt;xsl:if test="image"&gt;
+          &lt;xsl:variable name="image-path"&gt;
+            &lt;xsl:value-of select="image/@src"/&gt;
+          &lt;/xsl:variable&gt;
+
+          &lt;i class="fa fa-2"&gt;
+            &lt;img src="?f={$image-path}" class="img-responsive"/&gt;
+          &lt;/i&gt;
+        &lt;/xsl:if&gt;
+        &lt;xsl:copy-of select="block-text"/&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/xsl:template&gt;
+  
+  &lt;xsl:template match="blockItem/image"&gt;
+    &lt;img src="/?f={@src}"/&gt;
+  &lt;/xsl:template&gt;
+
+
+&lt;/xsl:stylesheet&gt;</stylesheet><node-schema webpalschematype="wpPageRaw" id="nodekU6UI8V5GqTN" lang="any" show-in="main" modifiedBy="sinthu" modified="20160106.101559">&lt;schema xmlns="http://www.palominosys.com/wpschema"&gt;
+  
+    
+  &lt;complexType extends="wpPage" name="wpPage-contentBlock"&gt;
+    &lt;element name="contentBlock" type="wpContentBlockList" folder="list"/&gt;
+  &lt;/complexType&gt;
+
+
+
+  &lt;complexType name="wpContentBlockList" edittype="sheet" icon="table.png" lockable="yes"&gt;
+
+    &lt;attribute name="id" use="auto" type="wpString" value="contentBlock"/&gt;
+    &lt;attribute name="name" use="optional" type="wpName" value=""/&gt;
+    &lt;attribute name="show-in" use="oneof" type="wpString" value="main,related1,related2,related3,related4,related5"/&gt;
+    &lt;element name="text" type="wpHtml"/&gt;
+    &lt;element name="blockItem" type="wpBlockItem" /&gt;
+    &lt;element name="button" type="wpBlockButton" /&gt;
+
+
+  &lt;/complexType&gt;
+
+  &lt;complexType name="wpBlockItem" edittype="sheet" icon="input.png" lockable="yes"&gt;
+    &lt;attribute name="id" use="auto" type="wpString" value="blockItem"/&gt;
+    &lt;element name="icon" type="wpString" maxOccurs="1" /&gt;
+    &lt;element name="image" type="wpImage" maxOccurs="1" /&gt;
+    &lt;element name="block-text" type="wpHtml" minOccurs="1" /&gt;
+  &lt;/complexType&gt;
+
+
+  &lt;complexType name="wpBlockButton" edittype="sheet" icon="input.png" lockable="yes"&gt;
+    &lt;attribute name="button-title" use="default" type="wpString" value=""/&gt;
+    &lt;attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/&gt;
+    &lt;attribute name="target" use="oneof" value="_self,_blank,_parent,_top"/&gt;
+    &lt;attribute name="button-link" use="default" type="wpString" value=""/&gt;
+  &lt;/complexType&gt;
+
+&lt;/schema&gt;</node-schema></extension>
