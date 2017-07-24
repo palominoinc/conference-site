@@ -2,6 +2,12 @@
 <README id="READAP4PeN8u9ea5" lang="any" name="README" webpalschematype="wpHtml">
     <h1>WebPal Core Extension</h1>
     <p id="pQYOswQ5HEic3">The webpal-core extension is a package of the core CMS functionality for publishing a Laravel-powered web application. Basic page/design/node editing and publishing functionality included. Published PHP renders content using a multi-level caching scheme and XSLT+blade templating mechanism.</p>
+    <h2>Getting started</h2>
+    <p>Please refer<ch value="nbsp"/>to our [WebPal Developer Guide](https://www.gitbook.com/book/palomino/webpaldev/details) for more information on how to use WebPal extensions</p>
+    <ul>
+      <li>Writing and extension</li>
+      <li>GitHub integration</li>
+    </ul>
     <h2>XSL stylesheets</h2>
     <p id="pZrUh9hKXdFvk">XSL stylesheets are powerful transformation templates for rendering static XML content into web application content, which then are eval'd as PHP script by a Laravel default router.</p>
     <p id="phd6SxZV2m_n0" style="text-align:center;">
@@ -9,7 +15,7 @@
         <span id="spanvp0dtgpQRVwG" style="font-family:courier new,courier,monospace">XML --(XSLT)--<ch value="gt"/> HTML+PHP<ch value="nbsp"/>--(eval)--<ch value="gt"/> XHTML-output</span>
       </strong>
     </p>
-    <p id="pNFdeXUlo1Opr">One or more XSL stylesheets (aka templates) can be defined.</p>
+    <p id="pNFdeXUlo1Opr">One or more XSL stylesheets (aka templates) can be defined..</p>
     <h2>
       <ch value="nbsp"/>
     </h2>
@@ -45,76 +51,7 @@
     <p id="psh_giRc3nAKM">
       <ch value="nbsp"/>
     </p>
-    <p id="pyJyB7TdK4goD">The following source files are included:</p>
-    <table align="center" border="1" cellpadding="3" cellspacing="0" id="tablvKnQcYnGyBKQ" style="width:80%;">
-      <tbody id="tbodKkwO5AZfvIUJ">
-        <tr id="tr7VT2KIwskInZ">
-          <td id="tdtu9rdErkTIWu" style="width:155px;">
-            <strong>Source</strong>
-          </td>
-          <td id="tdAToMZ6xaMCwW" style="width:565px;">
-            <strong>Description</strong>
-          </td>
-        </tr>
-        <tr id="tr0kM6pOmXH3et">
-          <td id="tdcPv2zoUeCTap" style="width:155px;">AppCompiler</td>
-          <td id="tdEFVRopohCFyi" style="width:565px;">
-            <span id="spanu7oLwXNWKGNQ" style="background-color:#FFFF00">(+) is this needed in the extension or should be 'hidden' instead?</span>
-          </td>
-        </tr>
-        <tr id="trosI1ztDfGNek">
-          <td id="tdLzedYTfJJrMC" style="width:155px;">AppSchemaUpdater</td>
-          <td id="tdQ4S7P8z1TMqo" style="width:565px;">
-            <ch value="nbsp"/>
-          </td>
-        </tr>
-        <tr id="trkfBMWL6TV74B">
-          <td id="tdurhxVSk9UcQ6" style="width:155px;">DMLogin</td>
-          <td id="tdo_dyTCfNZUmU" style="width:565px;">
-            <ch value="nbsp"/>
-          </td>
-        </tr>
-        <tr id="tr7xqGOkYJQX7u">
-          <td id="tdFrQxP9hcnFsg" style="width:155px;">WebPal</td>
-          <td id="td5mWPViXl8UTy" style="width:565px;">
-            <span id="spanmfPOk0qotZcA" style="background-color:#FFFF00">propose to rename WebPalApp</span>
-          </td>
-        </tr>
-        <tr id="trL1pD9Qh6uQh4">
-          <td id="tdm6DjmX9noUv_" style="width:155px;">
-            <ch value="nbsp"/>
-          </td>
-          <td id="tds3adeP5df5Ak" style="width:565px;">
-            <ch value="nbsp"/>
-          </td>
-        </tr>
-        <tr id="trIjSf0ILCneAh">
-          <td id="tdAy04AjEqVA2v" style="width:155px;">
-            <ch value="nbsp"/>
-          </td>
-          <td id="tdhrUY_hXyjmYn" style="width:565px;">
-            <ch value="nbsp"/>
-          </td>
-        </tr>
-        <tr id="trhpYfFBMfGNX_">
-          <td id="tdPShHRTOKCXoD" style="width:155px;">
-            <ch value="nbsp"/>
-          </td>
-          <td id="tdGVMde6fcC9nf" style="width:565px;">
-            <ch value="nbsp"/>
-          </td>
-        </tr>
-        <tr id="trv9pyXqriXDEq">
-          <td id="td6CmA41qEp4v7" style="width:155px;">
-            <ch value="nbsp"/>
-          </td>
-          <td id="tdonp7YPtVS8xp" style="width:565px;">
-            <ch value="nbsp"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p id="pv5tHLCrxeWCq">
+    <p id="pyJyB7TdK4goD">
       <ch value="nbsp"/>
     </p>
     <p id="pFhK8Ydl8eJgN">

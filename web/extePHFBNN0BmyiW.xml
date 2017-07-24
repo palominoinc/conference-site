@@ -1,2 +1,4 @@
 <?xml version="1.0"?>
-<extension id="extePHFBNN0BmyiW" name="event-site" webpalschematype="wpExtension"><node-schema id="nodeUG3fJ8Iw5P87" __stub="yes"/></extension>
+<extension id="extePHFBNN0BmyiW" name="event-site" webpalschematype="wpExtension">
+  <node-schema id="nodeUG3fJ8Iw5P87" __stub="yes"/>
+</extension>

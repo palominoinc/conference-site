@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <README id="READsE83YeROo4p2" lang="any" webpalschematype="wpHtml">
-    <h1>Getting started</h1>
-    <p>Please refer<ch value="nbsp"/>to our [WebPal Developer Guide](https://www.gitbook.com/book/palomino/webpaldev/details) for more information on how to use WebPal extensions</p>
-    <ul>
-      <li>Writing and extension</li>
-      <li>GitHub integration</li>
-    </ul>
-    <p>NOTE: 'extensions-essentials' is required for all WebPal extensions</p>
-    <h1>News-list</h1>
-    <p>Plugin<ch value="nbsp"/>for WebPal-powered applications</p>
-    <p>A news-list is a list of news items<ch value="nbsp"/>where all<ch value="nbsp"/>data is kept in an editable table with layout options</p>
-    <p>Simply<ch value="nbsp"/>add this plugin to your WebPal<ch value="nbsp"/>extensions</p>
-    <p>Insert a news-list into a page you are creating</p>
-    <p>
-      <img alt="" data-file-id="612879135342491020" src="612879135342491020" style="vertical-align:bottom;" title="" width="594"/>
-    </p>
-    <p>
-      <ch value="nbsp"/>
-    </p>
-    <h3>Optional:</h3>
-    <p>Inset following XSL in your template for<ch value="nbsp"/>a news widget populating few of most recent news items:<ch value="nbsp"/><ch value="nbsp"/></p>
-    <p>```<ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:call-template name="newslistWidget"<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="node-name" select="'newslistname'" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="enable-view-all-link" select="true()" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="view-all-link-text" select="'Read more'" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="enable-individual-page" select="true()" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="col-class" select="'col-md-4 col-lg-3'"/<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="max-items" select="number(8)"/<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>/xsl:call-template<ch value="gt"/><br/>
+        <h1>Getting started</h1>
+        <p>Please refer<ch value="nbsp"/>to our [WebPal Developer Guide](https://www.gitbook.com/book/palomino/webpaldev/details) for more information on how to use WebPal extensions</p>
+        <ul>
+          <li>Writing and extension</li>
+          <li>GitHub integration</li>
+        </ul>
+        <p>NOTE: 'extensions-essentials' is required for all WebPal extensions</p>
+        <h1>News-list</h1>
+        <p>Plugin<ch value="nbsp"/>for WebPal-powered applications</p>
+        <p>A news-list is a list of news items<ch value="nbsp"/>where all<ch value="nbsp"/>data is kept in an editable table with layout options</p>
+        <p>Simply<ch value="nbsp"/>add this plugin to your WebPal<ch value="nbsp"/>extensions</p>
+        <p>Insert a news-list into a page you are creating</p>
+        <p>
+          <img alt="" data-file-id="612879135342491020" src="612879135342491020" style="vertical-align:bottom;" title="" width="594"/>
+        </p>
+        <p>
+          <ch value="nbsp"/>
+        </p>
+        <h3>Optional:</h3>
+        <p>Inset following XSL in your template for<ch value="nbsp"/>a news widget populating few of most recent news items:<ch value="nbsp"/><ch value="nbsp"/></p>
+        <p>```<ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:call-template name="newslistWidget"<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="node-name" select="'newslistname'" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="enable-view-all-link" select="true()" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="view-all-link-text" select="'Read more'" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="enable-individual-page" select="true()" /<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="col-class" select="'col-md-4 col-lg-3'"/<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>xsl:with-param name="max-items" select="number(8)"/<ch value="gt"/><br/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="nbsp"/><ch value="lt"/>/xsl:call-template<ch value="gt"/><br/>
 ```</p>
-    <p>You have the ability to<ch value="nbsp"/>customize the values under 'select'. Most importantly,<ch value="nbsp"/>`<ch value="lt"/>xsl:with-param name="node-name" select="'newslistname'" /<ch value="gt"/>`,<ch value="nbsp"/>"newslistname" should be changed to name of the news-list you wish to generate this widget for.<ch value="nbsp"/></p>
-    <p>Requires Bootstrap 3.3 and FontAwesome 4.5 frameworks</p>
-  </README>
+        <p>You have the ability to<ch value="nbsp"/>customize the values under 'select'. Most importantly,<ch value="nbsp"/>`<ch value="lt"/>xsl:with-param name="node-name" select="'newslistname'" /<ch value="gt"/>`,<ch value="nbsp"/>"newslistname" should be changed to name of the news-list you wish to generate this widget for.<ch value="nbsp"/></p>
+        <p>Requires Bootstrap 3.3 and FontAwesome 4.5 frameworks</p>
+      </README>

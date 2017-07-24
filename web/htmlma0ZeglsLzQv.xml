@@ -1,35 +1,76 @@
 <?xml version="1.0"?>
-<html id="htmlma0ZeglsLzQv" lang="any" show="yes" show-in="main" webpalschematype="wpPageHtml"><h1>Sponsors</h1>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius arcu non lacinia vestibulum. Nam erat tellus, ullamcorper quis elit nec, placerat ullamcorper ligula. Suspendisse sollicitudin, risus ac elementum cursus, neque eros egestas nunc, et euismod turpis odio at elit. Fusce a risus urna. Nulla interdum lorem eu pharetra ornare. Curabitur eu augue faucibus, scelerisque leo ac, faucibus velit. Fusce feugiat risus ac ex commodo, sed blandit lectus sagittis. Vivamus egestas dolor quis lectus tincidunt, in tempus purus commodo. Praesent vestibulum, dolor nec molestie sagittis, orci sem ultricies massa, quis condimentum augue magna vel ex. Etiam vehicula tincidunt augue, eget porttitor orci porta vitae. Pellentesque tincidunt semper congue. Nullam ut ex ac arcu imperdiet lobortis. Sed lacinia lorem nisi.</p>
-
-<p style="text-align:center;"><ch value="nbsp"/></p>
-
-<h2 style="text-align:center;"><ch value="nbsp"/></h2>
-
-<h2 style="text-align:center;">Gold Sponsor</h2>
-
-<h2 style="text-align:center;"><img alt="" data-file-id="152366706216457438" src="152366706216457438" style="vertical-align:bottom;" title="" width="150"/></h2>
-
-<h2 style="text-align:center;"><ch value="nbsp"/></h2>
-
-<h2 style="text-align:center;">Silver Sponsors</h2>
-
-<p style="text-align:center;"><img alt="" data-file-id="171868647610547698" src="171868647610547698" style="vertical-align:bottom;" title="" width="150"/><ch value="nbsp"/> <ch value="nbsp"/><ch value="nbsp"/></p>
-
-<h2 style="text-align:center;"><ch value="nbsp"/></h2>
-
-<h2 style="text-align:center;">Bronze Sponsors</h2>
-
-<p style="text-align:center;"><span style="display:none"><ch value="nbsp"/></span><span style="display:none"><ch value="nbsp"/></span><img alt="" data-file-id="771796160632280643" src="771796160632280643" style="vertical-align:bottom;" title="" width="100"/><ch value="nbsp"/> <ch value="nbsp"/> <ch value="nbsp"/><ch value="nbsp"/><img alt="" data-file-id="119111617712546520" src="119111617712546520" style="vertical-align:bottom;" title="" width="150"/><span style="display:none"><ch value="nbsp"/></span><ch value="nbsp"/> <ch value="nbsp"/> <ch value="nbsp"/><ch value="nbsp"/><span style="display:none"><ch value="nbsp"/></span><span style="display:none"><ch value="nbsp"/></span><img alt="" data-file-id="553106485105891482" src="553106485105891482" style="vertical-align:bottom;" title="" width="130"/><span style="display:none"><ch value="nbsp"/></span><span style="display:none"><ch value="nbsp"/></span></p>
-
-<p style="text-align:center;"><ch value="nbsp"/></p>
-
-<h3 style="text-align:center;"><ch value="nbsp"/></h3>
-
-<h3 style="text-align:center;"><ch value="nbsp"/></h3>
-
-<h3 style="text-align:center;">Interested in Sponsoring CSME 2016?</h3>
-
-<h3 style="text-align:center;"><a data-display-inline="false" href="mailto:youremail%40webpal.net">Contact us today!</a></h3>
-</html>
+<html id="htmlma0ZeglsLzQv" lang="any" show="yes" show-in="main" webpalschematype="wpPageHtml">
+        <h1>Sponsors</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius arcu non lacinia vestibulum. Nam erat tellus, ullamcorper quis elit nec, placerat ullamcorper ligula. Suspendisse sollicitudin, risus ac elementum cursus, neque eros egestas nunc, et euismod turpis odio at elit. Fusce a risus urna. Nulla interdum lorem eu pharetra ornare. Curabitur eu augue faucibus, scelerisque leo ac, faucibus velit. Fusce feugiat risus ac ex commodo, sed blandit lectus sagittis. Vivamus egestas dolor quis lectus tincidunt, in tempus purus commodo. Praesent vestibulum, dolor nec molestie sagittis, orci sem ultricies massa, quis condimentum augue magna vel ex. Etiam vehicula tincidunt augue, eget porttitor orci porta vitae. Pellentesque tincidunt semper congue. Nullam ut ex ac arcu imperdiet lobortis. Sed lacinia lorem nisi.</p>
+        <p style="text-align:center;">
+          <ch value="nbsp"/>
+        </p>
+        <h2 style="text-align:center;">
+          <ch value="nbsp"/>
+        </h2>
+        <h2 style="text-align:center;">Gold Sponsor</h2>
+        <h2 style="text-align:center;">
+          <img alt="" data-file-id="152366706216457438" src="152366706216457438" style="vertical-align:bottom;" title="" width="150"/>
+        </h2>
+        <h2 style="text-align:center;">
+          <ch value="nbsp"/>
+        </h2>
+        <h2 style="text-align:center;">Silver Sponsors</h2>
+        <p style="text-align:center;">
+          <img alt="" data-file-id="171868647610547698" src="171868647610547698" style="vertical-align:bottom;" title="" width="150"/>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+        </p>
+        <h2 style="text-align:center;">
+          <ch value="nbsp"/>
+        </h2>
+        <h2 style="text-align:center;">Bronze Sponsors</h2>
+        <p style="text-align:center;">
+          <span style="display:none">
+            <ch value="nbsp"/>
+          </span>
+          <span style="display:none">
+            <ch value="nbsp"/>
+          </span>
+          <img alt="" data-file-id="771796160632280643" src="771796160632280643" style="vertical-align:bottom;" title="" width="100"/>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+          <img alt="" data-file-id="119111617712546520" src="119111617712546520" style="vertical-align:bottom;" title="" width="150"/>
+          <span style="display:none">
+            <ch value="nbsp"/>
+          </span>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+          <ch value="nbsp"/>
+          <span style="display:none">
+            <ch value="nbsp"/>
+          </span>
+          <span style="display:none">
+            <ch value="nbsp"/>
+          </span>
+          <img alt="" data-file-id="553106485105891482" src="553106485105891482" style="vertical-align:bottom;" title="" width="130"/>
+          <span style="display:none">
+            <ch value="nbsp"/>
+          </span>
+          <span style="display:none">
+            <ch value="nbsp"/>
+          </span>
+        </p>
+        <p style="text-align:center;">
+          <ch value="nbsp"/>
+        </p>
+        <h3 style="text-align:center;">
+          <ch value="nbsp"/>
+        </h3>
+        <h3 style="text-align:center;">
+          <ch value="nbsp"/>
+        </h3>
+        <h3 style="text-align:center;">Interested in Sponsoring CSME 2016?</h3>
+        <h3 style="text-align:center;">
+          <a data-display-inline="false" href="mailto:youremail%40webpal.net">Contact us today!</a>
+        </h3>
+      </html>

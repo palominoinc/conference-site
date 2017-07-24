@@ -7,18 +7,18 @@
     &lt;meta name="Version" content="3.2.0" /&gt;
     &lt;meta name="Classification" content="" /&gt;
 
-    &lt;link type="text/css" rel="stylesheet" href="?f=resources/WebpalCore/errorpage.css" /&gt;
+    &lt;link type="text/css" rel="stylesheet" href="/resource/ext/WebpalCore/errorpage.css" /&gt;
 
     &lt;title&gt;Error: WebPal.net Cloud Server&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body class="errorBody"&gt;
 
-    &lt;div id="banner" class="banner dm-ui-banner"&gt;
+&lt;!--     &lt;div id="banner" class="banner dm-ui-banner"&gt;
       &lt;div class="bannerLogo"&gt;
-        &lt;img src="?f=resources/WebpalCore/webpal_dm_logo.png" hspace="0" vspace="0" alt="WebPAL DM Logo"/&gt;
+        &lt;img src="/resource/ext/WebpalCore/webpal_dm_logo.png" hspace="0" vspace="0" alt="WebPAL DM Logo"/&gt;
       &lt;/div&gt;
-    &lt;/div&gt;
+    &lt;/div&gt; --&gt;
     &lt;div class="error-content"&gt;
       &lt;h1&gt;
         {{$title}}

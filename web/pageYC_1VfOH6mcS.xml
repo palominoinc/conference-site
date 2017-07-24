@@ -1,2 +1,6 @@
 <?xml version="1.0"?>
-<page id="pageYC_1VfOH6mcS" index="same as parent" name="news" show-in-menu="yes" webpalschematype="wpPage"><html id="htmlnmt_3ews3F6W" __stub="yes"/><news-list id="newsPYGHOTSXQGst" __stub="yes"/><shorttitle id="shorPYKjSNwG2mjz" __stub="yes"/></page>
+<page id="pageYC_1VfOH6mcS" index="same as parent" name="news" show-in-menu="yes" webpalschematype="wpPage">
+  <html id="htmlnmt_3ews3F6W" __stub="yes"/>
+  <news-list id="newsPYGHOTSXQGst" __stub="yes"/>
+  <shorttitle id="shorPYKjSNwG2mjz" __stub="yes"/>
+</page>

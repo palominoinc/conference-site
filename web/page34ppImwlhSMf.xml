@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<page design="default" id="page34ppImwlhSMf" index="do not index" name="common" show-in-menu="no" webpalschematype="wpPage"><html id="htmlIeUaVoNL5vPE" __stub="yes"/><html id="htmlKQpYYj__5pA3" __stub="yes"/>
-      
-      <shorttitle id="shorDJfqjG61OqIq" __stub="yes"/>
-    </page>
+<page design="default" id="page34ppImwlhSMf" index="do not index" name="common" show-in-menu="no" webpalschematype="wpPage">
+  <html id="htmlIeUaVoNL5vPE" __stub="yes"/>
+  <html id="htmlKQpYYj__5pA3" __stub="yes"/>
+  <shorttitle id="shorDJfqjG61OqIq" __stub="yes"/>
+</page>

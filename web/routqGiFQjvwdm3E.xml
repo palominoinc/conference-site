@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@render" filter="" id="routqGiFQjvwdm3E" name="webpalcore.c" parameters="{&quot;xpath&quot;:&quot;/web/pages/page[@name='${a}']/page[@name='${b}']/page[@name='${c}']&quot;}" pattern="/{a}/{b}/{c}" verb="get" webpalschematype="wpAppRoute"/>

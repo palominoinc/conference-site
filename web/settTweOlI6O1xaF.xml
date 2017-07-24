@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<settings create-wap="no" create-web="yes" groupaccess="all:r" id="settTweOlI6O1xaF" optimize-images="auto" webpalschematype="wpWebsettings"><event id="evenzHSVFw0RxcTW" __stub="yes"/>
-    <keywords id="keyw98CEHcHt8Cfj" __stub="yes"/>
-    <description id="descuGJAr1aVx9Z4" __stub="yes"/>
-    <title id="titldq5u2gYylVfT" __stub="yes"/>
-  </settings>
+<settings create-wap="no" create-web="yes" groupaccess="all:r" id="settTweOlI6O1xaF" optimize-images="auto" webpalschematype="wpWebsettings">
+  <event id="evenzHSVFw0RxcTW" __stub="yes"/>
+  <keywords id="keyw98CEHcHt8Cfj" __stub="yes"/>
+  <description id="descuGJAr1aVx9Z4" __stub="yes"/>
+  <title id="titldq5u2gYylVfT" __stub="yes"/>
+</settings>

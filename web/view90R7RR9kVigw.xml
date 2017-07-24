@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <views id="view90R7RR9kVigw" webpalschematype="wpAppViewList">
-    <template id="templpxHsjHeUFMq" __stub="yes"/>
-    <code-view id="appsFhfSpMlHFxl3" __stub="yes"/>
-    <code-view id="code26GIcTg_fTFi" __stub="yes"/>
-  </views>
+  <template id="templpxHsjHeUFMq" __stub="yes"/>
+  <code-view id="appsFhfSpMlHFxl3" __stub="yes"/>
+  <code-view id="code26GIcTg_fTFi" __stub="yes"/>
+</views>

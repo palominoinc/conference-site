@@ -1,2 +1,9 @@
 <?xml version="1.0"?>
-<extension id="exteZEth8pKTpVAK" name="conference-template" webpalschematype="wpExtension"><stylesheet id="wpRaGye2mk7_zkrk" __stub="yes"/><stylesheet id="wpRaSzNLELGuEpdu" __stub="yes"/><resource-links id="resoiFz8ShKahWID" __stub="yes"/><resources id="resofZDx4U5JIVUz" __stub="yes"/><stylesheet id="styl19QTjf157a4t" __stub="yes"/><stylesheet id="stylZ3_BKio17TBA" __stub="yes"/></extension>
+<extension id="exteZEth8pKTpVAK" name="conference-template" webpalschematype="wpExtension">
+  <stylesheet id="wpRaGye2mk7_zkrk" __stub="yes"/>
+  <stylesheet id="wpRaSzNLELGuEpdu" __stub="yes"/>
+  <resource-links id="resoiFz8ShKahWID" __stub="yes"/>
+  <resources id="resofZDx4U5JIVUz" __stub="yes"/>
+  <stylesheet id="styl19QTjf157a4t" __stub="yes"/>
+  <stylesheet id="stylZ3_BKio17TBA" __stub="yes"/>
+</extension>

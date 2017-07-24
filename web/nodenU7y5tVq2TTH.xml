@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <node-schema id="nodenU7y5tVq2TTH" lang="any" name="core-xsd" show-in="main" webpalschematype="wpPageRaw"><![CDATA[<schema xmlns="http://www.palominosys.com/wpschema">
 
-  <!-- ==================== WEBPAL CORE NODE SCHEMA DEFINTIONS =================== -->
+  <!-- ==================== WWEBPAL CORE NODE SCHEMA DEFINTIONS =================== -->
   <!-- EDIT CAREFULLY. Editing this schema may result in the site not being accessible anymore -->
 
   <!-- HELP:
@@ -42,9 +42,8 @@
     <element name="settings" type="wpWebsettings" minOccurs="1" maxOccurs="1"/>
     <element name="designs" type="wpDesigns" minOccurs="1"/>
     <element name="pages" type="wpPageList" maxOccurs="1"/>
-    <element name="apps" type="wpAppList" maxOccurs="1"/>
+    <element name="scripts" type="wpScripts" maxOccurs="1"/>
     <element name="extensions" type="wpExtensions" maxOccurs="1"/>
-    <element name="databases" type="wpDatabases" maxOccurs="1"/>
   </complexType>
 
 
@@ -63,6 +62,7 @@
 
 
   <complexType name="wpPageList" edittype="sheet" icon="folder_page.png">
+    <attribute name="name" use="optional" type="wpName"/>
     <element name="page" type="wpPage"/>
   </complexType>
 
@@ -93,13 +93,16 @@
     <element name="html-code-anchor" type="wpPageRaw" folder="core"/>
   </complexType>
 
+  <!-- Scripts -->
+  <complexType name="wpScripts"
+               edittype="source-folder"
+               icon="folder.png"
+               lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="apps"/>
+    <attribute name="name" type="string" use="hide" value="bin" />
+    <attribute name="folder-type" type="string" use="hide" value="scripts" />
+  </complexType>
 
-<!--   <complexType name="wpEmbeddedData" edittype="data-table" icon="table.png" lockable="yes">
-    <attribute name="id" use="auto" type="wpString" value="dtab"/>
-    <attribute name="name" use="default" type="wpString" value="data-table"/>
-  </complexType> -->
-
-  <!-- apps list -->
 
   <complexType name="wpExtensions" edittype="sheet" icon="folder_brick.png" lockable="yes">
     <attribute name="id" use="auto" value="webset" type="wpString"/>
@@ -786,10 +789,11 @@
     <element name="font" type="wpMenuFontDefinition" minOccurs="1" />
 
   </complexType>
-  
+
   <complexType name="wpImage" edittype="image" icon="picture.png" lockable="yes">
     <attribute name="id" use="auto" value="img"/>
     <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+    <attribute name="alt" use="default" value="" type="wpString"/>
     <!-- don't show these, client will still add them. -->
     <attribute name="src" use="hide"/>
     <attribute name="width" use="hide" />
@@ -811,6 +815,9 @@
     <element name="icon" type="wpImage" maxOccurs="1"/>
   </complexType>
 
+  <complexType name="wpFileL" base="wpFile" icon="attach.png" lockable="yes">
+    <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>
+  </complexType>
 
   <complexType name="wpShorttitle" base="wpString" edittype="string" icon="input.png">
     <attribute name="lang" use="oneof" value="any,en,fr,de,es" type="wpString"/>

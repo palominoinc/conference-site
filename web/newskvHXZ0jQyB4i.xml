@@ -1,2 +1,6 @@
 <?xml version="1.0"?>
-<news date="05/19/2016" id="newskvHXZ0jQyB4i" name="test4" webpalschematype="wpNews_v1"><text id="textYz_WhKUWgkLZ" __stub="yes"/><synopsis id="synourW7i6_z7kUg" __stub="yes"/><title id="titlVTFUyDUzYOHR" __stub="yes"/></news>
+<news date="05/19/2016" id="newskvHXZ0jQyB4i" name="test4" webpalschematype="wpNews_v1">
+  <text id="textYz_WhKUWgkLZ" __stub="yes"/>
+  <synopsis id="synourW7i6_z7kUg" __stub="yes"/>
+  <title id="titlVTFUyDUzYOHR" __stub="yes"/>
+</news>

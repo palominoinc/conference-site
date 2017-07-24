@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<page design="standard-sidebar" id="pageUFURgTxoF1MC" index="same as parent" name="agenda" show-in-menu="yes" webpalschematype="wpPage"><html id="htmljTGmRk_uKUA8" __stub="yes"/><html id="html2YgGpfKBk9AV" __stub="yes"/><page id="pageEgR4dnXKa0Lt" __stub="yes"/><page id="chappYR5FOln3I0c" __stub="yes"/>
-      
-      <shorttitle id="shorqjz_sT79viXq" __stub="yes"/>
-    </page>
+<page design="standard-sidebar" id="pageUFURgTxoF1MC" index="same as parent" name="agenda" show-in-menu="yes" webpalschematype="wpPage">
+  <html id="htmljTGmRk_uKUA8" __stub="yes"/>
+  <html id="html2YgGpfKBk9AV" __stub="yes"/>
+  <page id="pageEgR4dnXKa0Lt" __stub="yes"/>
+  <page id="chappYR5FOln3I0c" __stub="yes"/>
+  <shorttitle id="shorqjz_sT79viXq" __stub="yes"/>
+</page>

@@ -1,2 +1,6 @@
 <?xml version="1.0"?>
-<page id="pagecqTB3Esm1UwU" index="same as parent" name="speakers" show-in-menu="yes" webpalschematype="wpPage"><html id="htmllsWuwj13jS1L" __stub="yes"/><staff-list id="stafA0F9Wwr3qgR8" __stub="yes"/><shorttitle id="shoruBEori5FRoL8" __stub="yes"/></page>
+<page id="pagecqTB3Esm1UwU" index="same as parent" name="speakers" show-in-menu="yes" webpalschematype="wpPage">
+  <html id="htmllsWuwj13jS1L" __stub="yes"/>
+  <staff-list id="stafA0F9Wwr3qgR8" __stub="yes"/>
+  <shorttitle id="shoruBEori5FRoL8" __stub="yes"/>
+</page>

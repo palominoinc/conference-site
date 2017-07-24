@@ -1,4 +1,12 @@
 <?xml version="1.0"?>
-<extensions groupaccess="" id="exteNDswrnk0qfD2" useraccess="" webpalschematype="wpExtensions"><extension id="exteDpZvtS7PVhk4" __stub="yes"/><extension id="exteZEth8pKTpVAK" __stub="yes"/><extension id="exteawSFfNDoYgqk" __stub="yes"/><extension id="extecRCqUckj0o1h" __stub="yes"/><extension id="exteRvUCAIXHNwW2" __stub="yes"/><extension id="extePHFBNN0BmyiW" __stub="yes"/><extension id="exteUO1PndjvKJFv" __stub="yes"/><extension id="exteh2Xuzo7Bxs9S" __stub="yes"/>
-    <extension id="exteeg6xhaBOuNCx" __stub="yes"/>
-  </extensions>
+<extensions groupaccess="" id="exteNDswrnk0qfD2" useraccess="" webpalschematype="wpExtensions">
+  <extension id="exteDpZvtS7PVhk4" __stub="yes"/>
+  <extension id="exteZEth8pKTpVAK" __stub="yes"/>
+  <extension id="exteawSFfNDoYgqk" __stub="yes"/>
+  <extension id="extecRCqUckj0o1h" __stub="yes"/>
+  <extension id="exteRvUCAIXHNwW2" __stub="yes"/>
+  <extension id="extePHFBNN0BmyiW" __stub="yes"/>
+  <extension id="exteUO1PndjvKJFv" __stub="yes"/>
+  <extension id="exteh2Xuzo7Bxs9S" __stub="yes"/>
+  <extension id="exteeg6xhaBOuNCx" __stub="yes"/>
+</extensions>

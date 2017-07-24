@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<page design="home" id="chap5TFGNeLIf1Lu" index="same as parent" name="home" show-in-menu="yes" webpalschematype="wpPage"><contentBlock id="contFgSBMz13ZN7U" __stub="yes"/><contentBlock id="contJ17cx7CBk7eD" __stub="yes"/><contentBlock id="contD8V_ekTqAwTW" __stub="yes"/><html id="htmlnlOFUFRQGD6w" __stub="yes"/>
-      
-      <shorttitle id="shor8FGmV3WiFaKY" __stub="yes"/>
-    </page>
+<page design="home" id="chap5TFGNeLIf1Lu" index="same as parent" name="home" show-in-menu="yes" webpalschematype="wpPage">
+  <contentBlock id="contFgSBMz13ZN7U" __stub="yes"/>
+  <contentBlock id="contJ17cx7CBk7eD" __stub="yes"/>
+  <contentBlock id="contD8V_ekTqAwTW" __stub="yes"/>
+  <html id="htmlnlOFUFRQGD6w" __stub="yes"/>
+  <shorttitle id="shor8FGmV3WiFaKY" __stub="yes"/>
+</page>

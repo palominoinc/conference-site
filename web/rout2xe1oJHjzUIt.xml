@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@concatenateJavaScript" filter="" id="rout2xe1oJHjzUIt" name="" parameters="" pattern="/resource/cat/js" verb="get" webpalschematype="wpAppRoute"/>
