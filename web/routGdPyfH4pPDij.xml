@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@render" filter="" id="routGdPyfH4pPDij" name="webpalcore.search" parameters="{&quot;xpath&quot;:&quot;/web/pages//*[@id='${id}']&quot;, &quot;mode&quot;:&quot;search&quot;}" pattern="/search/{id}" verb="get" webpalschematype="wpAppRoute"/>

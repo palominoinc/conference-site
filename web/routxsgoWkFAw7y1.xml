@@ -1,2 +1,0 @@
-<?xml version="1.0"?>
-<route controller="\WebpalCore\Controllers\Core@render" filter="" id="routxsgoWkFAw7y1" name="webpalcore.renderByPath" parameters="${path}" pattern="/{path}" verb="get" webpalschematype="wpAppRoute"/>

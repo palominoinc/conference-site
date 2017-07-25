@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@concatenateCSS" filter="" id="routLZ8LZ1CcemNk" name="" parameters="" pattern="/resource/cat/css" verb="get" webpalschematype="wpAppRoute"/>

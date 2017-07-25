@@ -7,7 +7,7 @@
 
     <div id="banner" class="banner dm-ui-banner">
       <div class="bannerLogo">
-        <img src="?f=resources/WebpalCore/webpal_dm_logo.png" hspace="0" vspace="0" alt="WebPAL DM Logo"/>
+        <img src="/resource/ext/WebpalCore/webpal_dm_logo.png" hspace="0" vspace="0" alt="WebPAL DM Logo"/>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
         </h1>
         @if (Session::get('message'))
         <div class="login-message">
-          {{Session::get('message')}}        
+          {{Session::get('message')}}
         </div>
         @endif
         <div class="login-box-form">
@@ -27,14 +27,14 @@
               Enter PIN to login:
             </p>
             <p>
-              <input class="input" name="pin" id="form-input-pin" value="" data-placeholder="6-digit PIN"/>            
+              <input class="input" name="pin" id="form-input-pin" value="" data-placeholder="6-digit PIN"/>
             </p>
             <button class="btn btn-lg" value=" LOGIN " onClick="submit()"> LOGIN </button>
           </form>
         </div>
       </div>
     </div>
-    
+
   </body>
 </html>
 

@@ -1,2 +1,10 @@
 <?xml version="1.0"?>
-<member hidden="no" id="membrsmzTPa8NLq0" name="peter" webpalschematype="wpStaffMember"><twitter id="twitzSQKLUuQZs0_" __stub="yes"/><linkedin id="linkRweveYOTHMtv" __stub="yes"/><summary id="summgdMx00nqVvjl" __stub="yes"/><title id="titlgwvfMECUS0O4" __stub="yes"/><image id="imaga9Y0c7tkGxTe" __stub="yes"/><lastname id="lastQuvjykBAzKGi" __stub="yes"/><firstname id="firsd2m5wyDcvgpQ" __stub="yes"/></member>
+<member hidden="no" id="membrsmzTPa8NLq0" name="peter" webpalschematype="wpStaffMember">
+  <twitter id="twitzSQKLUuQZs0_" __stub="yes"/>
+  <linkedin id="linkRweveYOTHMtv" __stub="yes"/>
+  <summary id="summgdMx00nqVvjl" __stub="yes"/>
+  <title id="titlgwvfMECUS0O4" __stub="yes"/>
+  <image id="imaga9Y0c7tkGxTe" __stub="yes"/>
+  <lastname id="lastQuvjykBAzKGi" __stub="yes"/>
+  <firstname id="firsd2m5wyDcvgpQ" __stub="yes"/>
+</member>

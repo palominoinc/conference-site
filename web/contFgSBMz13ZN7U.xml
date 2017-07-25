@@ -1,2 +1,8 @@
 <?xml version="1.0"?>
-<contentBlock id="contFgSBMz13ZN7U" name="event-info" show-in="main" webpalschematype="wpContentBlockList"><text id="textV8E68PIhmC1W" __stub="yes"/><blockItem id="blocgV0FHt9tBWOS" __stub="yes"/><blockItem id="blocC_tygiVfoEWm" __stub="yes"/><blockItem id="blocmwFcVsItZ13r" __stub="yes"/><blockItem id="blocGaloMAQ8kyjs" __stub="yes"/></contentBlock>
+<contentBlock id="contFgSBMz13ZN7U" name="event-info" show-in="main" webpalschematype="wpContentBlockList">
+  <text id="textV8E68PIhmC1W" __stub="yes"/>
+  <blockItem id="blocgV0FHt9tBWOS" __stub="yes"/>
+  <blockItem id="blocC_tygiVfoEWm" __stub="yes"/>
+  <blockItem id="blocmwFcVsItZ13r" __stub="yes"/>
+  <blockItem id="blocGaloMAQ8kyjs" __stub="yes"/>
+</contentBlock>

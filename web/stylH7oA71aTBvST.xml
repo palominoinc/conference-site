@@ -331,7 +331,7 @@ Illegal reproduction and disclosure will be prosecuted  -->
   <xsl:template match="staff-list/member/image">
     <xsl:if test=". and @src !=''">
       <div class="square image">
-        <img class="img img-responsive full-width" src="?f={@src}" />
+        <img class="img img-responsive full-width" src="/resource/dm/{@src}" />
       </div>
     </xsl:if>
   </xsl:template>

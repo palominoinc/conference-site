@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@render" filter="" id="routTtqfsc2NyRKJ" name="webpalcore.renderByName" parameters="{&quot;xpath&quot;:&quot;/web/pages//*[@name='${name}']&quot;}" pattern="/by-name/{name}" verb="get" webpalschematype="wpAppRoute"/>

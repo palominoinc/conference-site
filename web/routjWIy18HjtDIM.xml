@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@resource" filter="" id="routjWIy18HjtDIM" name="webpalcore.resource.resize" parameters="{&quot;dm_id&quot;:&quot;${dm_id}&quot;, &quot;resize&quot;:&quot;${resize}&quot;}" pattern="/resource/dm/{dm_id}/resize={resize}" verb="get" webpalschematype="wpAppRoute"/>

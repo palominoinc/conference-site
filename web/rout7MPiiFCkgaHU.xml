@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@resourceFile" id="rout7MPiiFCkgaHU" name="webpalcore.resourceExt" parameters="{ &quot;q&quot; : &quot;r&quot;}" pattern="/resource/ext/{path*}" verb="get" webpalschematype="wpAppRoute"/>

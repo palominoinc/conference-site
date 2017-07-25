@@ -1,2 +1,5 @@
 <?xml version="1.0"?>
-<blockItem id="blocnGiPlpompsik" webpalschematype="wpBlockItem"><icon id="iconVRm5xB3KakP_" __stub="yes"/><block-text id="blocAEDfPUX3AeH0" __stub="yes"/></blockItem>
+<blockItem id="blocnGiPlpompsik" webpalschematype="wpBlockItem">
+  <icon id="iconVRm5xB3KakP_" __stub="yes"/>
+  <block-text id="blocAEDfPUX3AeH0" __stub="yes"/>
+</blockItem>

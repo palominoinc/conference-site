@@ -2,3 +2,9 @@
 /node.xml
 __trash
 **/__trash
+#*
+*~
+.tern-port
+**/laravel-configuration/config
+**/extensions/README.md
+/web/published.xml

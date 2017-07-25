@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@callTemplate" filter="" id="rout2zUgYoGy9yl4" name="" parameters="{&quot;xpath&quot;:&quot;/web/pages//*[@id='${id}']&quot;, &quot;template&quot;:&quot;${template}&quot;}" pattern="/call-template/{template}/{id}" verb="get" webpalschematype="wpAppRoute"/>

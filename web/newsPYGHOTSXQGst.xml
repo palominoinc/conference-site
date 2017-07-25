@@ -1,2 +1,17 @@
 <?xml version="1.0"?>
-<news-list col-size="sm" column-widths="NaN,NaN,92,212,579,NaN,NaN" date-format="Month_dd_yyyy" enable-individual-page="yes" id="newsPYGHOTSXQGst" include-social-bookmarking="yes" index="list-all" index-sort="date" items-per-page="5" items-per-row="1" layout="title-date-synopsis" name="conference-newslist" readMoreTitle="" show-in="main" social-bookmark-option="facebook,twitter,email" sort-order="descending" webpalschematype="wpNewsList_v1" widget-col-size="sm" widget-items-per-row="1" widget-layout="title-date-synopsis"><news id="newscrjXnMd5SUIJ" __stub="yes"/><news id="newsvux_nBAsLVeD" __stub="yes"/><news id="news4JCgIHIIoBcB" __stub="yes"/><news id="newskvHXZ0jQyB4i" __stub="yes"/><news id="newssYdW1ZmWs7a0" __stub="yes"/><news id="newsuD_BEVcR0ck9" __stub="yes"/><news id="newsjmLnZ96cw4Uf" __stub="yes"/><news id="newsmmYdjNdq2lYF" __stub="yes"/><news id="newsYix95pItcrWd" __stub="yes"/><news id="newsJ8VNfyRudHcs" __stub="yes"/><news id="newsKVvkBHUdy6sW" __stub="yes"/><news id="newsUNlTAKUWaIuR" __stub="yes"/><news id="newslJAG0ZiiUOfS" __stub="yes"/><news id="newsPF5xglV5CSML" __stub="yes"/></news-list>
+<news-list col-size="sm" column-widths="NaN,NaN,92,212,579,NaN,NaN" date-format="Month_dd_yyyy" enable-individual-page="yes" id="newsPYGHOTSXQGst" include-social-bookmarking="yes" index="list-all" index-sort="date" items-per-page="5" items-per-row="1" layout="title-date-synopsis" name="conference-newslist" readMoreTitle="" show-in="main" social-bookmark-option="facebook,twitter,email" sort-order="descending" webpalschematype="wpNewsList_v1" widget-col-size="sm" widget-items-per-row="1" widget-layout="title-date-synopsis">
+  <news id="newscrjXnMd5SUIJ" __stub="yes"/>
+  <news id="newsvux_nBAsLVeD" __stub="yes"/>
+  <news id="news4JCgIHIIoBcB" __stub="yes"/>
+  <news id="newskvHXZ0jQyB4i" __stub="yes"/>
+  <news id="newssYdW1ZmWs7a0" __stub="yes"/>
+  <news id="newsuD_BEVcR0ck9" __stub="yes"/>
+  <news id="newsjmLnZ96cw4Uf" __stub="yes"/>
+  <news id="newsmmYdjNdq2lYF" __stub="yes"/>
+  <news id="newsYix95pItcrWd" __stub="yes"/>
+  <news id="newsJ8VNfyRudHcs" __stub="yes"/>
+  <news id="newsKVvkBHUdy6sW" __stub="yes"/>
+  <news id="newsUNlTAKUWaIuR" __stub="yes"/>
+  <news id="newslJAG0ZiiUOfS" __stub="yes"/>
+  <news id="newsPF5xglV5CSML" __stub="yes"/>
+</news-list>

@@ -1,6 +1,20 @@
 <?xml version="1.0"?>
 <stylesheet id="stylyaTccomBVTSU" lang="any" name="core-theme" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<?xml version="1.0"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"
+<!DOCTYPE xsl:stylesheet [
+<!ENTITY nbsp "&#160;" >
+]>
+
+<!-- (c) 2001-present All Copyrights Palomino Inc.
+This code is for use within web applications powered by WebPal Cloud Server ONLY.
+Use in other Content Management Applications is not permitted.
+Modification of the code below is permitted and encouraged, at your own risk.
+-->
+
+<xsl:stylesheet version="1.0"
+                exclude-result-prefixes="wp php fn xsl"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:php="http://php.net/xsl"
+                xmlns:wp="http://www.palominosys.com/wp"
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
                 >
 
@@ -33,6 +47,7 @@
           </tr>
         </table>
         <xsl:call-template name="include-extension-scripts"/>
+        <!--         <xsl:call-template name="hello"/> -->
       </body>
     </html>
   </xsl:template>
@@ -70,7 +85,14 @@
   <!-- ====================================================================================================== -->
   <xsl:template match="page" mode="navigation">
     <xsl:param name="path" select="''"/>
-    <li><a href="{$path}/{@name}"><xsl:value-of select="@name"/></a></li>
+    <li><a href="{$path}/{@name}">
+      <xsl:choose>
+        <xsl:when test="shorttitle != ''"><xsl:value-of select="shorttitle"/></xsl:when>
+        <xsl:when test="title != ''"><xsl:value-of select="title"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+      </xsl:choose>
+      </a>
+    </li>
     <xsl:if test="page">
       <ul>
         <xsl:apply-templates select="page" mode="navigation">
@@ -81,16 +103,25 @@
   </xsl:template>
 
   <xsl:template name="webpalcore-theme-head">
+    <xsl:comment>
+      xpath: [[ $xpath or 'no path' ]]
+      lang: [[ $lang or 'no lang']]
+      mode: [[ $mode or 'no mode' ]]
+      design: [[ $design or 'no design' ]]
+    </xsl:comment>
     <head>
       <meta charset="utf-8"/>
       <title><xsl:value-of select="/web/settings/title"/></title>
       <meta name="description" content=""/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link type="text/css" rel="stylesheet" href="?f=resources/WebpalCore/errorpage.css" />
+      <link type="text/css" rel="stylesheet" href="/resource/ext/WebpalCore/errorpage.css" />
       <xsl:call-template name="include-extension-styles"/>
     </head>
   </xsl:template>
 
+  <xsl:template name="hello">
+    <li></li>
+  </xsl:template>
 
 </xsl:stylesheet>
 ]]></stylesheet>

@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@serveDocument" id="routVIwP2Uoyrd8m" name="webpalcore.doc" parameters="{&quot;path&quot;:&quot;/sites/${site}/${path}&quot;}" pattern="/sites/{site}/{path*}" verb="get" webpalschematype="wpAppRoute"/>

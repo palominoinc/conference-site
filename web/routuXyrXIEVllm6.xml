@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@resource" filter="" id="routuXyrXIEVllm6" name="webpalcore.resource" parameters="{&quot;dm_id&quot;:&quot;${dm_id}&quot;}" pattern="/resource/dm/{dm_id*}" verb="get" webpalschematype="wpAppRoute"/>

@@ -1,2 +1,8 @@
 <?xml version="1.0"?>
-<extension id="extecRCqUckj0o1h" name="twitter-feed" webpalschematype="wpExtension"><source id="sourRfwov1hOk7EO" __stub="yes"/><resource-links id="resoTIiw_PwLLAdV" __stub="yes"/><routes id="routGVdUWcdH47Al" __stub="yes"/><controllers id="contneezTNUeLRBg" __stub="yes"/><resources id="resofOc4euM5vGF4" __stub="yes"/></extension>
+<extension id="extecRCqUckj0o1h" name="twitter-feed" webpalschematype="wpExtension">
+  <source id="sourRfwov1hOk7EO" __stub="yes"/>
+  <resource-links id="resoTIiw_PwLLAdV" __stub="yes"/>
+  <routes id="routGVdUWcdH47Al" __stub="yes"/>
+  <controllers id="contneezTNUeLRBg" __stub="yes"/>
+  <resources id="resofOc4euM5vGF4" __stub="yes"/>
+</extension>

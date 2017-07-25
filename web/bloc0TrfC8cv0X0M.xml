@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<block-text id="bloc0TrfC8cv0X0M" lang="any" webpalschematype="wpHtml"><h4><a data-display-inline="false" href="chapter://page[@id='page8QSWqVzkmW7J']">Social Media 101</a></h4>
-
-<p>Donec laoreet nisi erat, quis tincidunt arcu interdum eu. Fusce blandit tristique odio, eu pellentesque sem vulputate nec.</p>
-</block-text>
+<block-text id="bloc0TrfC8cv0X0M" lang="any" webpalschematype="wpHtml">
+            <h4>
+              <a data-display-inline="false" href="chapter://page[@id='page8QSWqVzkmW7J']">Social Media 101</a>
+            </h4>
+            <p>Donec laoreet nisi erat, quis tincidunt arcu interdum eu. Fusce blandit tristique odio, eu pellentesque sem vulputate nec.</p>
+          </block-text>

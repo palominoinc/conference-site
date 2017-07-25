@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<block-text id="bloc8EsaaHxUVLyK" lang="any" webpalschematype="wpHtml"><h4><a data-display-inline="false" href="chapter://page[@id='pageKpuAYS5rg_vD']">Social Networks and Safety</a></h4>
-
-<p>Suspendisse potenti. Fusce fringilla ex ut nisl tincidunt, quis ultrices lectus facilisis. Pellentesque non massa feugiat, sagittis lectus sed, viverra libero.</p>
-</block-text>
+<block-text id="bloc8EsaaHxUVLyK" lang="any" webpalschematype="wpHtml">
+            <h4>
+              <a data-display-inline="false" href="chapter://page[@id='pageKpuAYS5rg_vD']">Social Networks and Safety</a>
+            </h4>
+            <p>Suspendisse potenti. Fusce fringilla ex ut nisl tincidunt, quis ultrices lectus facilisis. Pellentesque non massa feugiat, sagittis lectus sed, viverra libero.</p>
+          </block-text>

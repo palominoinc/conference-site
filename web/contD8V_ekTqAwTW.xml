@@ -1,2 +1,7 @@
 <?xml version="1.0"?>
-<contentBlock id="contD8V_ekTqAwTW" name="statistics" show-in="main" webpalschematype="wpContentBlockList"><blockItem id="blocJ4X8H84s1OAq" __stub="yes"/><blockItem id="bloc0ntwo4OyKgzh" __stub="yes"/><blockItem id="blocvjU0wV6MDJuk" __stub="yes"/><blockItem id="blocMXChe33BEuLV" __stub="yes"/></contentBlock>
+<contentBlock id="contD8V_ekTqAwTW" name="statistics" show-in="main" webpalschematype="wpContentBlockList">
+  <blockItem id="blocJ4X8H84s1OAq" __stub="yes"/>
+  <blockItem id="bloc0ntwo4OyKgzh" __stub="yes"/>
+  <blockItem id="blocvjU0wV6MDJuk" __stub="yes"/>
+  <blockItem id="blocMXChe33BEuLV" __stub="yes"/>
+</contentBlock>

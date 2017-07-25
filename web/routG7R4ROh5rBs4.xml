@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<route controller="\WebpalCore\Controllers\Core@renderByXpath" filter="" id="routG7R4ROh5rBs4" name="webpalcore.renderByXpath.TODO" parameters="{&quot;xpath&quot;:&quot;${xpath}&quot;}" pattern="/by-xpath" verb="any" webpalschematype="wpAppRoute"/>

@@ -1,2 +1,7 @@
 <?xml version="1.0"?>
-<extension groupaccess="all:r" id="webssEHqAWrWKeEz" name="wpSlideshow_v1" webpalschematype="wpExtension"><resources id="resox617tMVUnq0S" __stub="yes"/><stylesheet id="stylVxtkOQ0GkxHs" __stub="yes"/><node-schema id="wpRaKyfCJBTHUV8d" __stub="yes"/><resource-links id="resonGJZWq_gOuhD" __stub="yes"/></extension>
+<extension groupaccess="all:r" id="webssEHqAWrWKeEz" name="wpSlideshow_v1" webpalschematype="wpExtension">
+  <resources id="resox617tMVUnq0S" __stub="yes"/>
+  <stylesheet id="stylVxtkOQ0GkxHs" __stub="yes"/>
+  <node-schema id="wpRaKyfCJBTHUV8d" __stub="yes"/>
+  <resource-links id="resonGJZWq_gOuhD" __stub="yes"/>
+</extension>

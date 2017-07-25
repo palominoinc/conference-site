@@ -1,2 +1,16 @@
 <?xml version="1.0"?>
-<member hidden="no" id="membr1A2Yk11pNwR" name="" webpalschematype="wpStaffMember"><youtube id="yout9tGahYGimGVv" __stub="yes"/><flickr id="flicx784xhy_EdGC" __stub="yes"/><tumblr id="tumb6EFflMSAJWAU" __stub="yes"/><github id="githFmlko4S32Wil" __stub="yes"/><facebook id="facevocvDUkF9TRT" __stub="yes"/><twitter id="twitcYcghsSKXdFB" __stub="yes"/><linkedin id="linkY99UkWth3u_Y" __stub="yes"/><fax id="faxO3_l_OhQH9WZ" __stub="yes"/><phone id="phonL5GVGEghQTIt" __stub="yes"/><email id="emai_eU8A2jlQQYx" __stub="yes"/><title id="titl5aECSqKKnt8B" __stub="yes"/><lastname id="last_7RDeREiz6Xi" __stub="yes"/><firstname id="firsCzWUvDugeEjA" __stub="yes"/></member>
+<member hidden="no" id="membr1A2Yk11pNwR" name="" webpalschematype="wpStaffMember">
+  <youtube id="yout9tGahYGimGVv" __stub="yes"/>
+  <flickr id="flicx784xhy_EdGC" __stub="yes"/>
+  <tumblr id="tumb6EFflMSAJWAU" __stub="yes"/>
+  <github id="githFmlko4S32Wil" __stub="yes"/>
+  <facebook id="facevocvDUkF9TRT" __stub="yes"/>
+  <twitter id="twitcYcghsSKXdFB" __stub="yes"/>
+  <linkedin id="linkY99UkWth3u_Y" __stub="yes"/>
+  <fax id="faxO3_l_OhQH9WZ" __stub="yes"/>
+  <phone id="phonL5GVGEghQTIt" __stub="yes"/>
+  <email id="emai_eU8A2jlQQYx" __stub="yes"/>
+  <title id="titl5aECSqKKnt8B" __stub="yes"/>
+  <lastname id="last_7RDeREiz6Xi" __stub="yes"/>
+  <firstname id="firsCzWUvDugeEjA" __stub="yes"/>
+</member>

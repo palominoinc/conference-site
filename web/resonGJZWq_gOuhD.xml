@@ -1,2 +1,5 @@
 <?xml version="1.0"?>
-<resource-links column-widths="120,300,269" id="resonGJZWq_gOuhD" webpalschematype="wpAppResourceLinks"><resource-link id="reso8UszEQTH1yDE" __stub="yes"/><resource-link id="resowwukRVpht2rc" __stub="yes"/></resource-links>
+<resource-links column-widths="120,300,269" id="resonGJZWq_gOuhD" webpalschematype="wpAppResourceLinks">
+  <resource-link id="reso8UszEQTH1yDE" __stub="yes"/>
+  <resource-link id="resowwukRVpht2rc" __stub="yes"/>
+</resource-links>
