@@ -42,10 +42,10 @@
     
 
     <!-- ========================== Favicons =========================== -->
-    <link rel="shortcut icon" href="/_resources/ConferenceTemplate/icons/favicon.ico"/>
-    <link rel="apple-touch-icon" href="/_resources/ConferenceTemplate/icons/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="/_resources/ConferenceTemplate/icons/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="/_resources/ConferenceTemplate/icons/apple-touch-icon-114x114.png"/>
+    <link rel="shortcut icon" href="/resource/ext/ConferenceTemplate/icons/favicon.ico"/>
+    <link rel="apple-touch-icon" href="/resource/ext/ConferenceTemplate/icons/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="/resource/ext/ConferenceTemplate/icons/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="/resource/ext/ConferenceTemplate/icons/apple-touch-icon-114x114.png"/>
     
 
     <!-- ========================== Fonts =========================== -->
@@ -59,30 +59,30 @@
     
 
     <!-- === Extension Styles === -->
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     
-    <link rel="stylesheet" href="/_resources/WebsiteNavigation/css/jquery.smartmenus.bootstrap.css" />
-    <link rel="stylesheet" href="/_resources/WebsiteNavigation/css/jquery.sidr.dark.min.css" />
-    <link rel="stylesheet" href="/_resources/WebsiteNavigation/css/custom.css" />
+    <link rel="stylesheet" href="/resource/ext/WebsiteNavigation/css/jquery.smartmenus.bootstrap.css" />
+    <link rel="stylesheet" href="/resource/ext/WebsiteNavigation/css/jquery.sidr.dark.min.css" />
+    <link rel="stylesheet" href="/resource/ext/WebsiteNavigation/css/custom.css" />
     
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/animate.css" />
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/magnific-popup.css" />
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/owl.carousel.css" />
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/creative-brands.css" />
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/color-switcher.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/animate.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/magnific-popup.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/creative-brands.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/color-switcher.css" />
     
     
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/custom.css" />
-    <link rel="stylesheet" href="/_resources/ConferenceTemplate/css/custom-pal.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/custom.css" />
+    <link rel="stylesheet" href="/resource/ext/ConferenceTemplate/css/custom-pal.css" />
     
-    <link rel="stylesheet" href="/_resources/StaffList/staff-list.css" />
+    <link rel="stylesheet" href="/resource/ext/StaffList/staff-list.css" />
 
     
     <xsl:variable name='web-colour'>
       <xsl:value-of select="/web/settings/event/@web-colour"/>
     </xsl:variable>
-    <link href='/_resources/ConferenceTemplate/css/color/{$web-colour}.css' rel='stylesheet' type='text/css'/>
+    <link href='/resource/ext/ConferenceTemplate/css/color/{$web-colour}.css' rel='stylesheet' type='text/css'/>
     
 
     <!-- ========================== JS =========================== -->
@@ -98,27 +98,30 @@
 
   <xsl:template match="page[@design='footer-links']" name="footer-links" mode="page-template">
     <!-- === Extension Scripts === -->
+<!--     <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script> -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/bootstrap.min.js"></script>
-    
-    <script type="text/javascript" src="/_resources/WebsiteNavigation/js/jquery.smartmenus.bootstrap.js"></script>
-    <script type="text/javascript" src="/_resources/WebsiteNavigation/js/jquery.smartmenus.js"></script>
-    <script type="text/javascript" src="/_resources/WebsiteNavigation/js/custom.js"></script>
-    <script type="text/javascript" src="/_resources/WebsiteNavigation/js/jquery.sidr.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/WebsiteNavigation/js/jquery.smartmenus.js"></script>
+    <script type="text/javascript" src="/resource/ext/WebsiteNavigation/js/jquery.smartmenus.bootstrap.js"></script>
+ 
+    <script type="text/javascript" src="/resource/ext/WebsiteNavigation/js/custom.js"></script>
+    <script type="text/javascript" src="/resource/ext/WebsiteNavigation/js/jquery.sidr.min.js"></script>
 
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/jqBootstrapValidation.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/waypoints.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/jquery.counterup.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/jquery.countdown.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/jquery.mb.YTPlayer.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/typed.min.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/creative-brands.js"></script>
-    <script type="text/javascript" src="/_resources/ConferenceTemplate/js/custom.js"></script>
-    <script type="text/javascript" src="/_resources/ExtensionsEssentials/js/jpages.min.js"></script>
-    <script type="text/javascript" src="/_resources/TwitterFeed/js/twitter-feed.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/waypoints.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/jquery.counterup.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/jquery.mb.YTPlayer.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/typed.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/creative-brands.js"></script>
+    <script type="text/javascript" src="/resource/ext/ConferenceTemplate/js/custom.js"></script>
+    <script type="text/javascript" src="/resource/ext/ExtensionsEssentials/js/jpages.min.js"></script>
+    <script type="text/javascript" src="/resource/ext/TwitterFeed/js/twitter-feed.js"></script>
     
 <!--     <script>
       var images = document.getElementsByTagName("img");

@@ -23,7 +23,7 @@
         <xsl:variable name='location-city'>
           <xsl:value-of select="/web/settings/event/@location-city"/>
         </xsl:variable>
-        <section class="jumbotron jumbotron-event" style="background-image:url(/_resources/ConferenceTemplate/images/slideshow/{$location-city}.jpg);">
+        <section class="jumbotron jumbotron-event" style="background-image:url(/resource/ext/ConferenceTemplate/images/slideshow/{$location-city}.jpg);">
           <div class="container">
             <h2>
               <xsl:value-of select="/web/settings/event/@title"/></h2>
